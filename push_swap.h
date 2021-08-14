@@ -6,7 +6,7 @@
 /*   By: abridger <abridger@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/04 20:30:24 by abridger          #+#    #+#             */
-/*   Updated: 2021/08/05 22:18:03 by abridger         ###   ########.fr       */
+/*   Updated: 2021/08/14 22:19:24 by abridger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,16 @@ typedef struct s_data // пока не используется
 
 void	ft_puterror(void);
 int		ft_atoi(const char *str);
+void	ft_putchar(char c);
+int		ft_strlen(char *str);
+void	ft_putstr(char *str);
+void	ft_putnbr(int n);
 void	ft_lstadd_front(t_stack **a, int number, int index);
-size_t	get_index(int *array, int *sorted, size_t size);
-void	from_array(t_stack **a, int *array, int *sorted, size_t size);
-void	ft_print_stack(const t_stack *a); // переписать функцию
+int		get_index(int number, int *sorted, int size);
+void	from_array(t_stack **a, int *array, int *sorted, int size);
+void	ft_print_stack(const t_stack *a);
 void	ft_print_order(const t_stack *a); // для проверки, потом удалить функцию
+int		ft_isalpha(int c);
+void	check_argv(int argc, char **argv);
 
 #endif
