@@ -6,7 +6,7 @@
 /*   By: abridger <abridger@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/04 20:30:24 by abridger          #+#    #+#             */
-/*   Updated: 2021/08/14 22:19:24 by abridger         ###   ########.fr       */
+/*   Updated: 2021/08/17 21:25:29 by abridger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,5 +48,9 @@ void	ft_print_stack(const t_stack *a);
 void	ft_print_order(const t_stack *a); // для проверки, потом удалить функцию
 int		ft_isalpha(int c);
 void	check_argv(int argc, char **argv);
+void	check_string(int argc, char **argv);
+size_t	ft_words_nb(char const *s, char c);
+int		*ft_split(char const *s, char c);
+void	check_duplicate(int argc, int *array);
 
 #endif

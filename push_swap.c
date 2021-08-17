@@ -6,7 +6,7 @@
 /*   By: abridger <abridger@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/04 20:29:06 by abridger          #+#    #+#             */
-/*   Updated: 2021/08/14 21:59:37 by abridger         ###   ########.fr       */
+/*   Updated: 2021/08/17 21:29:32 by abridger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,23 @@ int	main(int argc, char **argv)
 	int		*sorted;
 
 	a = NULL;
-	check_argv(argc, argv);
 	i = 1;
-	array = (int *)malloc(sizeof(int) * (argc - 1));
-	while (i < argc)
+	if (argc == 2)
 	{
-		array[i - 1] = ft_atoi(argv[i]);
-		i++;
+		check_string(argc, argv);
+		array = ft_split(argv[1], ' ');
+	}
+	else
+	{
+		check_argv(argc, argv);
+		// i = 1;
+		array = (int *)malloc(sizeof(int) * (argc - 1));
+		while (i < argc)
+		{
+			array[i - 1] = ft_atoi(argv[i]);
+			i++;
+		}
+		check_duplicate(argc, array);
 	}
 	sorted = array; // написать функцию сортировки массива (нужно для индекса в сорт.списке)
 	from_array(&a, array, sorted, i);
