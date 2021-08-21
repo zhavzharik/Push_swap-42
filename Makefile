@@ -6,18 +6,19 @@
 #    By: abridger <abridger@student.21-school.ru    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/08/04 20:22:10 by abridger          #+#    #+#              #
-#    Updated: 2021/08/17 20:44:48 by abridger         ###   ########.fr        #
+#    Updated: 2021/08/21 18:40:35 by abridger         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = push_swap
 
 SRC = 	push_swap.c		\
-		utils.c			\
+		check_argv.c	\
 		parser.c		\
 		ft_atoi.c		\
 		ft_str.c		\
-		ft_split.c	
+		ft_split.c		\
+		sorting.c
 
 
 

@@ -6,7 +6,7 @@
 /*   By: abridger <abridger@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/04 20:30:24 by abridger          #+#    #+#             */
-/*   Updated: 2021/08/17 21:25:29 by abridger         ###   ########.fr       */
+/*   Updated: 2021/08/21 22:02:10 by abridger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <limits.h>
+# include <stdio.h> // для принтф, потом удалить
 
 typedef struct s_stack
 {
@@ -52,5 +53,9 @@ void	check_string(int argc, char **argv);
 size_t	ft_words_nb(char const *s, char c);
 int		*ft_split(char const *s, char c);
 void	check_duplicate(int argc, int *array);
+int		get_min(int *array);
+int		get_max(int *array);
+int		next_min(int *array, int min);
+int		*sorting_arr(int *array, int size);
 
 #endif
