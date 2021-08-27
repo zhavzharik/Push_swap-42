@@ -6,7 +6,7 @@
 /*   By: abridger <abridger@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/04 20:29:06 by abridger          #+#    #+#             */
-/*   Updated: 2021/08/21 21:53:09 by abridger         ###   ########.fr       */
+/*   Updated: 2021/08/27 21:49:38 by abridger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 int	main(int argc, char **argv)
 {
 	t_stack	*a;
+	t_stack	*b;
 	int		i;
 	int		*array;
 	int		*sorted;
@@ -38,9 +39,32 @@ int	main(int argc, char **argv)
 		}
 		check_duplicate(argc, array);
 	}
-	sorted = sorting_arr(array, argc - 1); // написать функцию сортировки массива (нужно для индекса в сорт.списке)
+	sorted = sorting_arr(array, argc - 1);
 	from_array(&a, array, sorted, i);
-	ft_print_stack(a); // проверяем, что аргументы считываются и переносятся в стек а
-	ft_print_order(a); // проверяем, какой порядок записан в стек
+	b = ft_lstinit();
+	testing(a, b);
 	return (0);
+}
+
+void	testing(t_stack *a, t_stack *b)
+{
+	printf("Стек А:\n");
+	ft_print_stack(a);
+	printf("Порядок:\n");
+	ft_print_order(a);
+	printf("Проверка rotate:\n");
+	rotate(&a, 1);
+	ft_print_stack(a);
+	printf("Проверка swap:\n");
+	swap(&a, 1);
+	ft_print_stack(a);
+	printf("Проверка reverse rotate:\n");
+	rev_rotate(&a, 1);
+	ft_print_stack(a);
+	printf("Проверка push b:\n");
+	push(&a, &b, 2);
+	printf("Стек В:\n");
+	ft_print_stack(b);
+	printf("Стек А:\n");
+	ft_print_stack(a);
 }

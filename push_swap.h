@@ -6,7 +6,7 @@
 /*   By: abridger <abridger@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/04 20:30:24 by abridger          #+#    #+#             */
-/*   Updated: 2021/08/21 22:02:10 by abridger         ###   ########.fr       */
+/*   Updated: 2021/08/27 21:45:44 by abridger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,14 @@ typedef struct s_stack
 
 typedef struct s_data // пока не используется
 {
-	int				*input;
-	int				*sorted;
+	// int				*input;
+	// int				*sorted;
 	int				next;
-	int				len_a;
-	int				len_b;
-	char			*action;
+	int				mid;
+	int				max;
+	// int				len_a;
+	// int				len_b;
+	// char			*action;
 }					t_data;
 
 void	ft_puterror(void);
@@ -53,9 +55,17 @@ void	check_string(int argc, char **argv);
 size_t	ft_words_nb(char const *s, char c);
 int		*ft_split(char const *s, char c);
 void	check_duplicate(int argc, int *array);
-int		get_min(int *array);
-int		get_max(int *array);
-int		next_min(int *array, int min);
+int		get_min(int *array, int size);
+int		get_max(int *array, int size);
+int		next_min(int *array, int min, int size);
 int		*sorting_arr(int *array, int size);
+t_stack	*ft_lstlast(t_stack *lst);
+void	rotate(t_stack **curr, int flag);
+void	testing(t_stack *a, t_stack *b); // delete
+void	swap(t_stack **curr, int flag);
+t_stack	*ft_lstlastbutone(t_stack *lst);
+void	rev_rotate(t_stack **curr, int flag);
+void	push(t_stack **from, t_stack **where, int flag);
+t_stack	*ft_lstinit(void);
 
 #endif

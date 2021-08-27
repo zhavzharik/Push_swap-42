@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   check_argv.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abridger <abridger@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/04 21:48:52 by abridger          #+#    #+#             */
-/*   Updated: 2021/08/17 21:24:13 by abridger         ###   ########.fr       */
+/*   Updated: 2021/08/27 20:04:16 by abridger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	check_argv(int argc, char **argv) // add check MAX_INT
 	}
 }
 
-void	check_string(int argc, char **argv)
+void	check_string(int argc, char **argv) // need to fix
 {
 	int		i;
 	int		j;
@@ -79,7 +79,7 @@ void	check_duplicate(int argc, int *array)
 	while (i < argc)
 	{
 		j = i + 1;
-		while (j < argc)
+		while (j < argc - 1)
 		{
 			if (array[i] == array[j])
 				ft_puterror();
