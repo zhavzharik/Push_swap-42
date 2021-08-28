@@ -6,7 +6,7 @@
 /*   By: abridger <abridger@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/04 20:29:06 by abridger          #+#    #+#             */
-/*   Updated: 2021/08/27 21:49:38 by abridger         ###   ########.fr       */
+/*   Updated: 2021/08/28 14:30:50 by abridger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,42 @@ void	testing(t_stack *a, t_stack *b)
 	ft_print_stack(a);
 	printf("Проверка push b:\n");
 	push(&a, &b, 2);
+	printf("Стек В:\n");
+	ft_print_stack(b);
+	printf("Стек А:\n");
+	ft_print_stack(a);
+	printf("Проверка push b:\n");
+	push(&a, &b, 2);
+	printf("Стек В:\n");
+	ft_print_stack(b);
+	printf("Стек А:\n");
+	ft_print_stack(a);
+	printf("Проверка rotate a and b:\n");
+	rotate_two(&a, &b);
+	printf("Стек В:\n");
+	ft_print_stack(b);
+	printf("Стек А:\n");
+	ft_print_stack(a);
+	printf("Проверка push b:\n");
+	push(&a, &b, 2);
+	printf("Стек В:\n");
+	ft_print_stack(b);
+	printf("Стек А:\n");
+	ft_print_stack(a);
+	printf("Проверка rotate a and b:\n");
+	rotate_two(&a, &b);
+	printf("Стек В:\n");
+	ft_print_stack(b);
+	printf("Стек А:\n");
+	ft_print_stack(a);
+	printf("Проверка reverse rotate a and b:\n");
+	rev_rotate_two(&a, &b);
+	printf("Стек В:\n");
+	ft_print_stack(b);
+	printf("Стек А:\n");
+	ft_print_stack(a);
+	printf("Проверка push a:\n");
+	push(&b, &a, 1);
 	printf("Стек В:\n");
 	ft_print_stack(b);
 	printf("Стек А:\n");

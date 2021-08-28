@@ -6,7 +6,7 @@
 /*   By: abridger <abridger@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/04 20:30:24 by abridger          #+#    #+#             */
-/*   Updated: 2021/08/27 21:45:44 by abridger         ###   ########.fr       */
+/*   Updated: 2021/08/28 14:33:50 by abridger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ typedef struct s_stack
 	int				nb;
 	int				indx;
 	int				flag;
-	//struct s_stack	*prev;
 	struct s_stack	*next;
 }					t_stack;
 
@@ -67,5 +66,7 @@ t_stack	*ft_lstlastbutone(t_stack *lst);
 void	rev_rotate(t_stack **curr, int flag);
 void	push(t_stack **from, t_stack **where, int flag);
 t_stack	*ft_lstinit(void);
+void	rotate_two(t_stack **a, t_stack **b);
+void	rev_rotate_two(t_stack **a, t_stack **b);
 
 #endif
