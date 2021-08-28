@@ -6,7 +6,7 @@
 /*   By: abridger <abridger@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/04 20:29:06 by abridger          #+#    #+#             */
-/*   Updated: 2021/08/28 14:30:50 by abridger         ###   ########.fr       */
+/*   Updated: 2021/08/28 16:34:14 by abridger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,30 +17,19 @@ int	main(int argc, char **argv)
 	t_stack	*a;
 	t_stack	*b;
 	int		i;
-	int		*array;
-	int		*sorted;
+	t_data	*data;
 
 	a = NULL;
-	if (argc == 2)
-	{
-		check_string(argc, argv);
-		array = ft_split(argv[1], ' ');
-		i = 1;
-	}
-	else
-	{
-		i = 1;
-		check_argv(argc, argv);
-		array = (int *)malloc(sizeof(int) * (argc - 1));
-		while (i < argc)
-		{
-			array[i - 1] = ft_atoi(argv[i]);
-			i++;
-		}
-		check_duplicate(argc, array);
-	}
-	sorted = sorting_arr(array, argc - 1);
-	from_array(&a, array, sorted, i);
+	// if (argc == 2)
+	// {
+	// 	check_string(argc, argv);
+	// 	array = ft_split(argv[1], ' ');
+	// 	i = 1;
+	// }
+	// else
+	data = init_struct(argc, argv);
+	sorting_arr(data, argc);
+	from_array(&a, array, sorted, i); // переписать
 	b = ft_lstinit();
 	testing(a, b);
 	return (0);
