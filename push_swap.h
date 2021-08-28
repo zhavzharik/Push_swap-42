@@ -6,7 +6,7 @@
 /*   By: abridger <abridger@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/04 20:30:24 by abridger          #+#    #+#             */
-/*   Updated: 2021/08/28 14:33:50 by abridger         ###   ########.fr       */
+/*   Updated: 2021/08/28 16:32:20 by abridger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,16 +25,14 @@ typedef struct s_stack
 	struct s_stack	*next;
 }					t_stack;
 
-typedef struct s_data // пока не используется
+typedef struct s_data
 {
-	// int				*input;
-	// int				*sorted;
+	int				*array;
+	int				*sorted;
+	int				size;
 	int				next;
 	int				mid;
 	int				max;
-	// int				len_a;
-	// int				len_b;
-	// char			*action;
 }					t_data;
 
 void	ft_puterror(void);
@@ -53,11 +51,11 @@ void	check_argv(int argc, char **argv);
 void	check_string(int argc, char **argv);
 size_t	ft_words_nb(char const *s, char c);
 int		*ft_split(char const *s, char c);
-void	check_duplicate(int argc, int *array);
-int		get_min(int *array, int size);
-int		get_max(int *array, int size);
-int		next_min(int *array, int min, int size);
-int		*sorting_arr(int *array, int size);
+void	check_duplicate(int argc, t_data *data);
+int		get_min(t_data *data);
+int		get_max(t_data *data);
+int		next_min(t_data *data, int min);
+void	sorting_arr(t_data *data, int argc);
 t_stack	*ft_lstlast(t_stack *lst);
 void	rotate(t_stack **curr, int flag);
 void	testing(t_stack *a, t_stack *b); // delete
@@ -68,5 +66,6 @@ void	push(t_stack **from, t_stack **where, int flag);
 t_stack	*ft_lstinit(void);
 void	rotate_two(t_stack **a, t_stack **b);
 void	rev_rotate_two(t_stack **a, t_stack **b);
+t_data	*init_struct(int argc, char **argv);
 
 #endif
