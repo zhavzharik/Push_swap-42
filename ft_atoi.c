@@ -6,7 +6,7 @@
 /*   By: abridger <abridger@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/19 10:18:17 by abridger          #+#    #+#             */
-/*   Updated: 2021/08/05 20:49:00 by abridger         ###   ########.fr       */
+/*   Updated: 2021/08/30 16:25:09 by abridger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,18 +23,21 @@ static int	ft_minus(char temp)
 	return (minus);
 }
 
-static int	ft_convert(char temp, int result)
+static long long	ft_convert(char temp, long long result, int minus)
 {
 	if (temp >= 48 && temp <= 57)
 		result = result * 10 + (temp - 48);
+	if ((result - 1 > INT_MAX && minus == -1)
+		|| (result > INT_MAX && minus == 1))
+		ft_puterror();
 	return (result);
 }
 
 int	ft_atoi(const char *str)
 {
-	int	i;
-	int	res;
-	int	minus;
+	int			i;
+	long long	res;
+	int			minus;
 
 	res = 0;
 	i = 0;
@@ -50,9 +53,9 @@ int	ft_atoi(const char *str)
 	{
 		while (str[i] >= 48 && str[i] <= 57)
 		{
-			res = ft_convert(str[i], res);
+			res = ft_convert(str[i], res, minus);
 			i++;
 		}
 	}
-	return ((res * minus));
+	return (((int)res * minus));
 }

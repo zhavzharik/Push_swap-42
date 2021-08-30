@@ -6,7 +6,7 @@
 /*   By: abridger <abridger@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/04 20:30:24 by abridger          #+#    #+#             */
-/*   Updated: 2021/08/28 16:32:20 by abridger         ###   ########.fr       */
+/*   Updated: 2021/08/30 22:27:12 by abridger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ typedef struct s_data
 	int				*array;
 	int				*sorted;
 	int				size;
+	int				flag;
 	int				next;
 	int				mid;
 	int				max;
@@ -42,8 +43,8 @@ int		ft_strlen(char *str);
 void	ft_putstr(char *str);
 void	ft_putnbr(int n);
 void	ft_lstadd_front(t_stack **a, int number, int index);
-int		get_index(int number, int *sorted, int size);
-void	from_array(t_stack **a, int *array, int *sorted, int size);
+int		get_index(t_data *data, int i);
+void	from_array(t_stack **a, t_data *data);
 void	ft_print_stack(const t_stack *a);
 void	ft_print_order(const t_stack *a); // для проверки, потом удалить функцию
 int		ft_isalpha(int c);
@@ -55,10 +56,10 @@ void	check_duplicate(int argc, t_data *data);
 int		get_min(t_data *data);
 int		get_max(t_data *data);
 int		next_min(t_data *data, int min);
-void	sorting_arr(t_data *data, int argc);
+void	sorting_arr(t_data *data);
 t_stack	*ft_lstlast(t_stack *lst);
 void	rotate(t_stack **curr, int flag);
-void	testing(t_stack *a, t_stack *b); // delete
+void	testing(t_stack *a, t_stack *b, t_data *data); // delete
 void	swap(t_stack **curr, int flag);
 t_stack	*ft_lstlastbutone(t_stack *lst);
 void	rev_rotate(t_stack **curr, int flag);
@@ -67,5 +68,9 @@ t_stack	*ft_lstinit(void);
 void	rotate_two(t_stack **a, t_stack **b);
 void	rev_rotate_two(t_stack **a, t_stack **b);
 t_data	*init_struct(int argc, char **argv);
+void	process_a(t_stack **a, t_stack **b, t_data *data);
+void	update_mid(t_data *data);
+void	process_b(t_stack **a, t_stack **b, t_data *data);
+void	update_next(t_stack **a, t_stack **b, t_data *data);
 
 #endif
