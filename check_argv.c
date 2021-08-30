@@ -6,7 +6,7 @@
 /*   By: abridger <abridger@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/04 21:48:52 by abridger          #+#    #+#             */
-/*   Updated: 2021/08/28 16:12:52 by abridger         ###   ########.fr       */
+/*   Updated: 2021/08/30 15:39:15 by abridger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	ft_isalpha(int c)
 		return (0);
 }
 
-void	check_argv(int argc, char **argv) // add check MAX_INT
+void	check_argv(int argc, char **argv)
 {
 	int	i;
 	int	len;

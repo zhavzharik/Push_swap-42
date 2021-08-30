@@ -6,7 +6,7 @@
 /*   By: abridger <abridger@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/04 20:29:06 by abridger          #+#    #+#             */
-/*   Updated: 2021/08/28 16:34:14 by abridger         ###   ########.fr       */
+/*   Updated: 2021/08/30 22:33:07 by abridger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ int	main(int argc, char **argv)
 {
 	t_stack	*a;
 	t_stack	*b;
-	int		i;
 	t_data	*data;
 
 	a = NULL;
@@ -28,68 +27,23 @@ int	main(int argc, char **argv)
 	// }
 	// else
 	data = init_struct(argc, argv);
-	sorting_arr(data, argc);
-	from_array(&a, array, sorted, i); // переписать
+	sorting_arr(data);
+	from_array(&a, data);
 	b = ft_lstinit();
-	testing(a, b);
+	testing(a, b, data); // delete
+	process_a(&a, &b, data);
+	update_mid(data);
+	testing(a, b, data); // dalete
+	process_b(&a, &b, data);
+	testing(a, b, data); // delete
 	return (0);
 }
 
-void	testing(t_stack *a, t_stack *b)
+void	testing(t_stack *a, t_stack *b, t_data *data)
 {
 	printf("Стек А:\n");
 	ft_print_stack(a);
-	printf("Порядок:\n");
-	ft_print_order(a);
-	printf("Проверка rotate:\n");
-	rotate(&a, 1);
-	ft_print_stack(a);
-	printf("Проверка swap:\n");
-	swap(&a, 1);
-	ft_print_stack(a);
-	printf("Проверка reverse rotate:\n");
-	rev_rotate(&a, 1);
-	ft_print_stack(a);
-	printf("Проверка push b:\n");
-	push(&a, &b, 2);
-	printf("Стек В:\n");
+	printf("Стек B:\n");
 	ft_print_stack(b);
-	printf("Стек А:\n");
-	ft_print_stack(a);
-	printf("Проверка push b:\n");
-	push(&a, &b, 2);
-	printf("Стек В:\n");
-	ft_print_stack(b);
-	printf("Стек А:\n");
-	ft_print_stack(a);
-	printf("Проверка rotate a and b:\n");
-	rotate_two(&a, &b);
-	printf("Стек В:\n");
-	ft_print_stack(b);
-	printf("Стек А:\n");
-	ft_print_stack(a);
-	printf("Проверка push b:\n");
-	push(&a, &b, 2);
-	printf("Стек В:\n");
-	ft_print_stack(b);
-	printf("Стек А:\n");
-	ft_print_stack(a);
-	printf("Проверка rotate a and b:\n");
-	rotate_two(&a, &b);
-	printf("Стек В:\n");
-	ft_print_stack(b);
-	printf("Стек А:\n");
-	ft_print_stack(a);
-	printf("Проверка reverse rotate a and b:\n");
-	rev_rotate_two(&a, &b);
-	printf("Стек В:\n");
-	ft_print_stack(b);
-	printf("Стек А:\n");
-	ft_print_stack(a);
-	printf("Проверка push a:\n");
-	push(&b, &a, 1);
-	printf("Стек В:\n");
-	ft_print_stack(b);
-	printf("Стек А:\n");
-	ft_print_stack(a);
+	printf("MID = %d\n", data->mid);
 }

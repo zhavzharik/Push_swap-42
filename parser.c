@@ -6,7 +6,7 @@
 /*   By: abridger <abridger@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/05 20:27:32 by abridger          #+#    #+#             */
-/*   Updated: 2021/08/14 16:51:06 by abridger         ###   ########.fr       */
+/*   Updated: 2021/08/30 16:11:20 by abridger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,32 +26,34 @@ void	ft_lstadd_front(t_stack **a, int number, int index)
 	(*a) = tmp;
 }
 
-int	get_index(int number, int *sorted, int size)
+int	get_index(t_data *data, int i)
 {
 	int	j;
 	int	indx;
 
-	j = size - 1;
-	while (j-- > 0)
+	j = data->size - 1;
+	while (j >= 0)
 	{
-		if (number == sorted[j])
+		if (data->array[i] == data->sorted[j])
 			indx = j + 1;
+		j--;
 	}
 	return (indx);
 }
 
-void	from_array(t_stack **a, int *array, int *sorted, int size)
+void	from_array(t_stack **a, t_data *data)
 {
 	int	i;
 	int	j;
 
-	i = size - 1;
-	if (array == NULL || size == 0)
+	i = data->size - 1;
+	if (data->array == NULL || data->size == 0)
 		ft_puterror();
-	while (i-- > 0)
+	while (i >= 0)
 	{
-		j = get_index(array[i], sorted, size);
-		ft_lstadd_front(a, array[i], j);
+		j = get_index(data, i);
+		ft_lstadd_front(a, data->array[i], j);
+		i--;
 	}
 }
 
