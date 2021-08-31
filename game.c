@@ -6,7 +6,7 @@
 /*   By: abridger <abridger@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/30 16:46:08 by abridger          #+#    #+#             */
-/*   Updated: 2021/08/30 22:28:42 by abridger         ###   ########.fr       */
+/*   Updated: 2021/08/31 22:55:25 by abridger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,8 @@ void	update_next(t_stack **a, t_stack **b, t_data *data)
 		rotate_two(a, b);
 		data->next += 1;
 	}
-	else if ((*a)->indx == data->next && (*b)->indx >= data->mid)
+	else if (((*a)->indx == data->next && (*b)->indx >= data->mid)
+		|| ((*a)->indx == data->next && !(*b)))
 	{
 		rotate(a, 1);
 		data->next += 1;

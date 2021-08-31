@@ -6,7 +6,7 @@
 /*   By: abridger <abridger@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/25 20:26:07 by abridger          #+#    #+#             */
-/*   Updated: 2021/08/27 21:32:16 by abridger         ###   ########.fr       */
+/*   Updated: 2021/08/31 23:01:44 by abridger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ void	push(t_stack **from, t_stack **where, int flag)
 {
 	t_stack	*tmp;
 
-	if ((*from))
+	if ((*from) && (*from)->next) // add condition if 1 list
 	{
 		tmp = (*from)->next;
 		(*from)->next = (*where);
