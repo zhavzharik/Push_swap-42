@@ -6,7 +6,7 @@
 /*   By: abridger <abridger@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/04 20:30:24 by abridger          #+#    #+#             */
-/*   Updated: 2021/08/30 22:27:12 by abridger         ###   ########.fr       */
+/*   Updated: 2021/08/31 22:43:53 by abridger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,5 +72,8 @@ void	process_a(t_stack **a, t_stack **b, t_data *data);
 void	update_mid(t_data *data);
 void	process_b(t_stack **a, t_stack **b, t_data *data);
 void	update_next(t_stack **a, t_stack **b, t_data *data);
+void	ft_lstclear(t_stack **lst);
+void	ft_structclear(t_data *data);
+void	ft_allclear(t_stack **a, t_stack **b, t_data *data);
 
 #endif
