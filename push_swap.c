@@ -6,7 +6,7 @@
 /*   By: abridger <abridger@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/04 20:29:06 by abridger          #+#    #+#             */
-/*   Updated: 2021/08/31 22:45:27 by abridger         ###   ########.fr       */
+/*   Updated: 2021/09/01 20:06:27 by abridger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,7 @@ int	main(int argc, char **argv)
 	sorting_arr(data);
 	from_array(&a, data);
 	b = ft_lstinit();
-	testing(a, b, data); // delete
-	process_a(&a, &b, data);
-	update_mid(data);
-	testing(a, b, data); // dalete
-	process_b(&a, &b, data);
-	testing(a, b, data); // delete
+	start_game(&a, &b, data);
 	ft_allclear(&a, &b, data);
 	return (0);
 }

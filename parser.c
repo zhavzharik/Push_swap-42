@@ -6,7 +6,7 @@
 /*   By: abridger <abridger@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/05 20:27:32 by abridger          #+#    #+#             */
-/*   Updated: 2021/08/30 16:11:20 by abridger         ###   ########.fr       */
+/*   Updated: 2021/09/01 20:15:03 by abridger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,9 +59,16 @@ void	from_array(t_stack **a, t_data *data)
 
 void	ft_print_stack(const t_stack *a)
 {
+	ft_putstr("Number\t");
+	ft_putstr("Order\t");
+	ft_putstr("Flag\n");
 	while (a)
 	{
 		ft_putnbr(a->nb);
+		ft_putchar('\t');
+		ft_putnbr(a->indx);
+		ft_putchar('\t');
+		ft_putnbr(a->flag);
 		ft_putchar('\n');
 		a = a->next;
 	}
