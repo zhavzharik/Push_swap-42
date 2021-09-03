@@ -6,7 +6,7 @@
 /*   By: abridger <abridger@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/04 21:48:52 by abridger          #+#    #+#             */
-/*   Updated: 2021/08/30 15:39:15 by abridger         ###   ########.fr       */
+/*   Updated: 2021/09/03 17:20:53 by abridger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@ void	check_argv(int argc, char **argv)
 	int	len;
 
 	i = 1;
-	if (argc <= 1)
-		ft_puterror();
+	if (argc < 1) // ??
+		ft_puterror(); // ??
 	while (i < argc)
 	{
 		len = 0;

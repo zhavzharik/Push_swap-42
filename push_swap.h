@@ -6,7 +6,7 @@
 /*   By: abridger <abridger@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/04 20:30:24 by abridger          #+#    #+#             */
-/*   Updated: 2021/09/01 20:04:56 by abridger         ###   ########.fr       */
+/*   Updated: 2021/09/03 23:00:06 by abridger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ typedef struct s_data
 	int				next;
 	int				mid;
 	int				max;
+	int				operations;
 }					t_data;
 
 void	ft_puterror(void);
@@ -45,7 +46,7 @@ void	ft_putnbr(int n);
 void	ft_lstadd_front(t_stack **a, int number, int index);
 int		get_index(t_data *data, int i);
 void	from_array(t_stack **a, t_data *data);
-void	ft_print_stack(const t_stack *a);
+void	ft_print_stack(const t_stack *a, t_data *data); // for check
 void	ft_print_order(const t_stack *a); // для проверки, потом удалить функцию
 int		ft_isalpha(int c);
 void	check_argv(int argc, char **argv);
@@ -58,23 +59,28 @@ int		get_max(t_data *data);
 int		next_min(t_data *data, int min);
 void	sorting_arr(t_data *data);
 t_stack	*ft_lstlast(t_stack *lst);
-void	rotate(t_stack **curr, int flag);
+void	rotate(t_stack **curr, int flag, t_data *data);
 void	testing(t_stack *a, t_stack *b, t_data *data); // delete
-void	swap(t_stack **curr, int flag);
+void	swap(t_stack **curr, int flag, t_data *data);
 t_stack	*ft_lstlastbutone(t_stack *lst);
-void	rev_rotate(t_stack **curr, int flag);
-void	push(t_stack **from, t_stack **where, int flag);
+void	rev_rotate(t_stack **curr, int flag, t_data *data);
+void	swap_two(t_stack **a, t_stack **b, t_data *data);
+void	push(t_stack **from, t_stack **where, int flag, t_data *data);
 t_stack	*ft_lstinit(void);
-void	rotate_two(t_stack **a, t_stack **b);
-void	rev_rotate_two(t_stack **a, t_stack **b);
+void	rotate_two(t_stack **a, t_stack **b, t_data *data);
+void	rev_rotate_two(t_stack **a, t_stack **b, t_data *data);
 t_data	*init_struct(int argc, char **argv);
-void	process_a(t_stack **a, t_stack **b, t_data *data);
+void	process_a(t_stack **a, t_stack **b, t_data *data, t_stack *last);
 void	update_mid(t_data *data);
 void	process_b(t_stack **a, t_stack **b, t_data *data);
 void	update_next(t_stack **a, t_stack **b, t_data *data);
 void	ft_lstclear(t_stack **lst);
 void	ft_structclear(t_data *data);
 void	ft_allclear(t_stack **a, t_stack **b, t_data *data);
-void	start_game(t_stack **a, t_stack **b, t_data *data);
+void	start_game(t_stack **a, t_stack **b, t_data *data, t_stack *last);
+int		whether_sorted(const t_stack *a, t_data *data);
+void	process_game(t_stack **a, t_stack **b, t_data *data);
+void	update_max(t_stack **a, t_stack **b, t_data *data);
+t_stack	*last_unsorted(t_stack *lst);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: abridger <abridger@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/21 22:02:32 by abridger          #+#    #+#             */
-/*   Updated: 2021/08/30 16:05:08 by abridger         ###   ########.fr       */
+/*   Updated: 2021/09/03 16:58:48 by abridger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,4 +77,26 @@ void	sorting_arr(t_data *data)
 		min = n_min;
 		i++;
 	}
+}
+
+int	whether_sorted(const t_stack *a, t_data *data)
+{
+	int	i;
+	int	value;
+
+	i = 0;
+	value = 2;
+	if (a && data)
+	{
+		while (a && value > 0)
+		{
+			if (a->nb == data->sorted[i])
+				value = 1;
+			else
+				value = 0;
+			a = a->next;
+			i++;
+		}
+	}
+	return (value);
 }
