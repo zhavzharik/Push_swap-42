@@ -6,7 +6,7 @@
 /*   By: abridger <abridger@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/27 15:43:33 by abridger          #+#    #+#             */
-/*   Updated: 2021/09/03 23:06:08 by abridger         ###   ########.fr       */
+/*   Updated: 2021/09/04 20:30:47 by abridger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,11 +41,26 @@ t_stack	*ft_lstinit(void)
 	return (new);
 }
 
-t_stack	*last_unsorted(t_stack *lst)
+t_stack	*lastbutone_unsorted(t_stack *lst)
 {
 	if (!lst)
 		return (NULL);
 	while (lst->next->flag == 0)
 		lst = lst->next;
 	return (lst);
+}
+
+int	ft_lstsize(t_stack *lst)
+{
+	int	length;
+
+	if (!lst)
+		return (0);
+	length = 1;
+	while (lst->next)
+	{
+		length++;
+		lst = lst->next;
+	}
+	return (length);
 }

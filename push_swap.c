@@ -6,7 +6,7 @@
 /*   By: abridger <abridger@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/04 20:29:06 by abridger          #+#    #+#             */
-/*   Updated: 2021/09/03 23:02:07 by abridger         ###   ########.fr       */
+/*   Updated: 2021/09/04 22:30:35 by abridger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ int	main(int argc, char **argv)
 	t_stack	*a;
 	t_stack	*b;
 	t_data	*data;
-	t_stack	*last;
 
 	a = NULL;
 	// if (argc == 2)
@@ -38,16 +37,10 @@ int	main(int argc, char **argv)
 		printf("Стек отсортирован изначально\n"); // delete
 		exit (0);
 	}
-	testing(a, b, data); // delete
-	last = ft_lstlast(a); //  выделить в функцию
-	start_game(&a, &b, data, last); // add loop for game function
-	process_game(&a, &b, data);
-	update_max(&a, &b, data);
-	if (whether_sorted(a, data) == 1) // delete
-		printf("Стек отсортирован (проверка в мейн)\n"); // delete
-	testing(a, b, data); // delete
-	printf("Количество чисел = %d\n", data->size); // delete
-	printf("Количество команд = %d\n", data->operations); // delete
+	if (data->size < 5)
+		short_stack(&a, &b, data);
+	else
+		game(&a, &b, data);
 	ft_allclear(&a, &b, data);
 	return (0);
 }

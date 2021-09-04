@@ -6,7 +6,7 @@
 #    By: abridger <abridger@student.21-school.ru    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/08/04 20:22:10 by abridger          #+#    #+#              #
-#    Updated: 2021/09/03 18:52:36 by abridger         ###   ########.fr        #
+#    Updated: 2021/09/04 21:39:24 by abridger         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,8 @@ SRC = 	push_swap.c		\
 		structure.c		\
 		game_1.c		\
 		clear.c			\
-		game_2.c
+		game_2.c		\
+		short_stack.c
 
 
 

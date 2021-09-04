@@ -6,7 +6,7 @@
 /*   By: abridger <abridger@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/04 20:30:24 by abridger          #+#    #+#             */
-/*   Updated: 2021/09/03 23:00:06 by abridger         ###   ########.fr       */
+/*   Updated: 2021/09/04 22:29:09 by abridger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,15 @@ void	ft_allclear(t_stack **a, t_stack **b, t_data *data);
 void	start_game(t_stack **a, t_stack **b, t_data *data, t_stack *last);
 int		whether_sorted(const t_stack *a, t_data *data);
 void	process_game(t_stack **a, t_stack **b, t_data *data);
-void	update_max(t_stack **a, t_stack **b, t_data *data);
-t_stack	*last_unsorted(t_stack *lst);
+void	update_max(t_data *data);
+void	process_unsorted(t_stack **a, t_stack **b, t_data *data);
+t_stack	*lastbutone_unsorted(t_stack *lst);
+int		ft_lstsize(t_stack *lst);
+void	game(t_stack **a, t_stack **b, t_data *data);
+void	stack_two(t_stack **a, t_data *data);
+void	stack_three(t_stack **curr, int flag, t_data *data);
+void	stack_four(t_stack **a, t_stack **b, t_data *data);
+void	short_stack(t_stack **a, t_stack **b, t_data *data);
+
 
 #endif
