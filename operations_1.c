@@ -6,7 +6,7 @@
 /*   By: abridger <abridger@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/25 20:26:07 by abridger          #+#    #+#             */
-/*   Updated: 2021/09/03 15:57:53 by abridger         ###   ########.fr       */
+/*   Updated: 2021/09/04 23:32:32 by abridger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void	rotate(t_stack **curr, int flag, t_data *data)
 		last->next = (*curr);
 		(*curr)->next = NULL;
 		(*curr) = tmp;
+		// tmp = NULL;
 		if (flag == 1)
 		{
 			write(1, "ra\n", 3);
@@ -50,6 +51,7 @@ void	swap(t_stack **curr, int flag, t_data *data)
 			(*curr)->next = NULL;
 		tmp->next = (*curr);
 		(*curr) = tmp;
+		// tmp = NULL;
 		if (flag == 1)
 		{
 			write(1, "sa\n", 3);
@@ -75,6 +77,8 @@ void	rev_rotate(t_stack **curr, int flag, t_data *data)
 		last->next = (*curr);
 		tmp->next = NULL;
 		(*curr) = last;
+		// tmp = NULL;
+		// last = NULL;
 		if (flag == 1)
 		{
 			write(1, "rra\n", 4);
@@ -98,6 +102,7 @@ void	push(t_stack **from, t_stack **where, int flag, t_data *data)
 		(*from)->next = (*where);
 		(*where) = (*from);
 		(*from) = tmp;
+		// tmp = NULL;
 		if (flag == 1)
 		{
 			write(1, "pa\n", 3);
