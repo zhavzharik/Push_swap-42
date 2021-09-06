@@ -6,7 +6,7 @@
 /*   By: abridger <abridger@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/04 20:30:24 by abridger          #+#    #+#             */
-/*   Updated: 2021/09/04 22:29:09 by abridger         ###   ########.fr       */
+/*   Updated: 2021/09/06 22:08:49 by abridger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,9 @@ void	game(t_stack **a, t_stack **b, t_data *data);
 void	stack_two(t_stack **a, t_data *data);
 void	stack_three(t_stack **curr, int flag, t_data *data);
 void	stack_four(t_stack **a, t_stack **b, t_data *data);
+void	stack_five(t_stack **a, t_stack **b, t_data *data);
 void	short_stack(t_stack **a, t_stack **b, t_data *data);
-
+void	check_topa(t_stack **a, t_stack **b, t_data *data);
+void	check_topb(t_stack **a, t_stack **b, t_data *data);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: abridger <abridger@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/04 20:29:06 by abridger          #+#    #+#             */
-/*   Updated: 2021/09/04 22:30:35 by abridger         ###   ########.fr       */
+/*   Updated: 2021/09/06 21:31:46 by abridger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	main(int argc, char **argv)
 		printf("Стек отсортирован изначально\n"); // delete
 		exit (0);
 	}
-	if (data->size < 5)
+	if (data->size < 6)
 		short_stack(&a, &b, data);
 	else
 		game(&a, &b, data);

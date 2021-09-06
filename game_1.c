@@ -6,7 +6,7 @@
 /*   By: abridger <abridger@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/30 16:46:08 by abridger          #+#    #+#             */
-/*   Updated: 2021/09/04 23:40:40 by abridger         ###   ########.fr       */
+/*   Updated: 2021/09/06 22:49:36 by abridger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,36 +40,33 @@ void	update_mid(t_data *data)
 void	process_b(t_stack **a, t_stack **b, t_data *data)
 {
 	t_stack	*last;
-	// int		len;
+	t_stack	*lastbutone;
 
 	last = ft_lstlast((*b));
+	lastbutone = ft_lstlastbutone((*b));
 	while ((*b)->next != last->next)
 	{
-		// len = ft_lstsize(*b);
-		// if (len == 3)
-		// {
-		// 	stack_three(b, 2, data);
-		// 	last = ft_lstlast((*b));
-		// }
 		if ((*b)->indx >= data->mid || (*b)->indx == data->next)
 		{
+			check_topa(a, b, data);
 			(*b)->flag = data->flag;
 			push(b, a, 1, data);
 			update_next(a, b, data);
 		}
-		else
+		else if ((*b) != lastbutone || ((*b) == lastbutone && last->indx >= data->next))
 			rotate(b, 2, data);
 	}
 	if ((*b))
 	{
 		if ((*b)->indx >= data->mid)
 		{
+			check_topa(a, b, data);
 			(*b)->flag = data->flag;
 			push(b, a, 1, data);
 			update_next(a, b, data);
 		}
-		else
-			rotate(b, 2, data);
+		// else
+		// 	rotate(b, 2, data);
 	}
 }
 
@@ -81,7 +78,7 @@ void	update_next(t_stack **a, t_stack **b, t_data *data)
 		rotate(a, 1, data);
 		data->next += 1;
 	}
-	else if ((*a) && (*b) && (*a)->indx == data->next && (*b)->indx < data->mid)
+	else if ((*a) && (*b) && (*a)->indx == data->next && (*b)->indx < data->mid) // sign
 	{
 		rotate_two(a, b, data);
 		data->next += 1;
@@ -90,19 +87,27 @@ void	update_next(t_stack **a, t_stack **b, t_data *data)
 
 void	start_game(t_stack **a, t_stack **b, t_data *data, t_stack *last)
 {
-	// int	len;
+	// int	len_b;
 
+	while ((*a)->indx == data->next || (*a)->next->indx == data->next)
+	{
+		if ((*a)->next->indx == data->next)
+			swap(a, 1, data);
+		update_next(a, b, data);
+		// check_topb(a, b, data);
+	}
 	process_a(a, b, data, last);
 	while (*b) // выделить в отдельную функцию и добавить другой алгоритм при трех
 	{
 		update_mid(data);
 		process_b(a, b, data);
-		// len = ft_lstsize(*b);
-		// if (len == 3)
+		// len_b = ft_lstsize(*b);
+		// if (len_b == 3 || len_b == 2)
 		// {
+		// 	stack_two(b, data);
 		// 	stack_three(b, 2, data);
-		// 	while (*b)
-		// 		push(b, a, 1, data);
+		// 	// while (*b)
+		// 	// 	push(b, a, 1, data);
 		// }
 	}
 	while ((*a)->indx == data->next || (*a)->next->indx == data->next)
@@ -110,5 +115,6 @@ void	start_game(t_stack **a, t_stack **b, t_data *data, t_stack *last)
 		if ((*a)->next->indx == data->next)
 			swap(a, 1, data);
 		update_next(a, b, data);
+		// check_topb(a, b, data);
 	}
 }

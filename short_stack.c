@@ -6,7 +6,7 @@
 /*   By: abridger <abridger@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/04 21:39:57 by abridger          #+#    #+#             */
-/*   Updated: 2021/09/04 22:49:12 by abridger         ###   ########.fr       */
+/*   Updated: 2021/09/06 21:48:52 by abridger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,35 +58,79 @@ void	stack_four(t_stack **a, t_stack **b, t_data *data)
 	len = ft_lstsize(*a);
 	if (len == 4)
 	{
-		if ((*a)->indx == 1 || (*a)->next->indx == 1)
+		if ((*a)->indx == data->next || (*a)->next->indx == data->next)
 		{
-			if ((*a)->next->indx == 1)
+			if ((*a)->next->indx == data->next)
 				swap(a, 1, data);
-			push(a, b, 2, data);
 		}
 		else
 		{
-			rev_rotate(a, 1, data);
-			if ((*a)->indx == 1)
-				push(a, b, 2, data);
-			else
-			{
+			while ((*a)->indx != data->next)
 				rev_rotate(a, 1, data);
-				if ((*a)->indx == 1)
-					push(a, b, 2, data);
-			}
 		}
+		if ((*a)->indx == data->next)
+		{
+			push(a, b, 2, data);
+			data->next += 1;
+		}
+		// else
+		// {
+		// 	rev_rotate(a, 1, data);
+		// 	if ((*a)->indx == 1)
+		// 		push(a, b, 2, data);
+		// 	else
+		// 	{
+		// 		rev_rotate(a, 1, data);
+		// 		if ((*a)->indx == 1)
+		// 			push(a, b, 2, data);
+		// 	}
+		// }
+
 		// stack_three(a, 1, data);
 		// push(b, a, 1, data);
+	}
+}
+
+void	stack_five(t_stack **a, t_stack **b, t_data *data)
+{
+	int	len;
+
+	len = ft_lstsize(*a);
+	if (len == 5)
+	{
+		if ((*a)->indx == data->next || (*a)->next->indx == data->next
+			|| (*a)->next->next->indx == data->next)
+		{
+			if ((*a)->next->indx == data->next)
+				swap(a, 1, data);
+			else if ((*a)->next->next->indx == data->next)
+				while ((*a)->indx != data->next)
+					rotate(a, 1, data);
+		}
+		else
+		{
+			while ((*a)->indx != data->next)
+				rev_rotate(a, 1, data);
+		}
+		if ((*a)->indx == data->next)
+		{
+			push(a, b, 2, data);
+			data->next += 1;
+		}
 	}
 }
 
 void	short_stack(t_stack **a, t_stack **b, t_data *data)
 {
 	stack_two(a, data);
+	stack_five(a, b, data);
 	stack_four(a, b, data);
 	stack_three(a, 1, data);
-	if (*b)
+	while (*b)
 		push(b, a, 1, data);
 	testing(*a, *b, data); // delete
+	printf("Количество чисел = %d\n", data->size); // delete
+	printf("Количество команд = %d\n", data->operations); // delete
+	if (whether_sorted(*a, data) == 1) // delete
+		printf("Стек отсортирован (проверка в short_stack)\n"); // delete
 }
