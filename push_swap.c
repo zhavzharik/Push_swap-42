@@ -6,7 +6,7 @@
 /*   By: abridger <abridger@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/04 20:29:06 by abridger          #+#    #+#             */
-/*   Updated: 2021/09/06 21:31:46 by abridger         ###   ########.fr       */
+/*   Updated: 2021/09/07 23:46:38 by abridger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,5 +51,5 @@ void	testing(t_stack *a, t_stack *b, t_data *data)
 	ft_print_stack(a, data);
 	printf("Стек B:\n");
 	ft_print_stack(b, data);
-	printf("MID = %d\n", data->mid);
+	// printf("MID = %d\n", data->mid);
 }

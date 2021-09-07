@@ -6,7 +6,7 @@
 /*   By: abridger <abridger@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/03 18:55:50 by abridger          #+#    #+#             */
-/*   Updated: 2021/09/06 22:46:22 by abridger         ###   ########.fr       */
+/*   Updated: 2021/09/07 23:45:01 by abridger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,13 @@ void	process_game(t_stack **a, t_stack **b, t_data *data)
 {
 	int		check;
 	t_stack	*last;
+	int 	i; // delete
 	// int		len_b;
-
+	i = 0; // delete
 	while (whether_sorted(*a, data) != 1 && (*a)->flag != 0)
 	{
 		// last = ft_lstlast(*a);
+		// check_topb(a, b, data);
 		check = (*a)->flag;
 		while ((*a)->flag == check && (*a)->flag != 0)
 		{
@@ -36,7 +38,7 @@ void	process_game(t_stack **a, t_stack **b, t_data *data)
 			{
 				rotate(a, 1, data);
 				data->next += 1;
-				check_topb(a, b, data);
+				// check_topb(a, b, data);
 			}
 			else
 				push(a, b, 2, data);
@@ -45,17 +47,25 @@ void	process_game(t_stack **a, t_stack **b, t_data *data)
 		testing(*a, *b, data); // delete
 		while (*b)  // выделить в отдельную функцию и добавить другой алгоритм при трех
 		{
-			update_mid(data);
+			update_mid(data, b);
+			printf("MID = %d\n", data->mid); // delete
+			printf("MAX = %d\n", data->max); // delete
+			printf("Next = %d\n", data->next); // delete
 			process_b(a, b, data);
+			printf("Сортируем Б %d раз:\n", i); //delete
+			testing(*a, *b, data); // delete
+			// update_mid(data, b);
 			// len_b = ft_lstsize(*b);
 			// if (len_b == 3 || len_b == 2)
 			// {
 			// 	stack_two(b, data);
 			// 	stack_three(b, 2, data);
 			// }
+			i++;
 		}
-		printf("Сортируем Б:\n"); //delete
-		testing(*a, *b, data); // delete
+		// printf("Сортируем Б:\n"); //delete
+		// testing(*a, *b, data); // delete
+		// check_topa(a, b, data);
 		while ((*a)->indx == data->next || (*a)->next->indx == data->next)
 		{
 			last = ft_lstlast(*a); // не сыграло
@@ -64,8 +74,8 @@ void	process_game(t_stack **a, t_stack **b, t_data *data)
 			update_next(a, b, data);
 			// check_topb(a, b, data);
 		}
-		printf("Если есть сл.число отправляем вниз, одновременно крутим Б, если надо:\n"); //delete
-		testing(*a, *b, data); // delete
+		// printf("Если есть сл.число отправляем вниз, одновременно крутим Б, если надо:\n"); //delete
+		// testing(*a, *b, data); // delete
 	}
 }
 
@@ -81,15 +91,17 @@ void	update_max(t_data *data)
 void	process_unsorted(t_stack **a, t_stack **b, t_data *data)
 {
 	t_stack	*unsorted;
+	int		i; // delete
 	// int		len_b;
 	// int		check;
 
+	i = 0; // delete
 	update_max(data);
 	unsorted = lastbutone_unsorted(*a);
 	process_a(a, b, data, unsorted);
 	printf("Снова делим несортированные числа и перекидываем в Б и вниз А:\n"); //delete
 	testing(*a, *b, data); // delete
-	update_mid(data);
+	update_mid(data, b);
 	// len_b = ft_lstsize(*b);
 	// check = ft_lstlast(*a)->flag;
 	while (ft_lstlast(*a)->flag == 0 && (*b)->indx != data->next) // && ft_lstlast(*a)->indx != data->next - 1
@@ -103,24 +115,28 @@ void	process_unsorted(t_stack **a, t_stack **b, t_data *data)
 	testing(*a, *b, data); // delete
 	while (*b) // переставлено update mid
 	{
+		// update_mid(data);
 		process_b(a, b, data);
+		printf("Сортируем Б %d раз:\n", i); //delete
+		testing(*a, *b, data); // delete
 		// len_b = ft_lstsize(*b);
 		// if (len_b == 3 || len_b == 2)
 		// {
 		// 	stack_two(b, data);
 		// 	stack_three(b, 2, data);
 		// }
-		update_mid(data);
+		update_mid(data, b);
+		i++;
 	}
 	printf("Перекидываем из Б обратно в А:\n"); //delete
 	testing(*a, *b, data); // delete
-	while ((*a)->indx == data->next || (*a)->next->indx == data->next)
-	{
-		if ((*a)->next->indx == data->next)
-			swap(a, 1, data);
-		update_next(a, b, data);
-		// check_topb(a, b, data);
-	}
+	check_topa(a, b, data);
+	// while ((*a)->indx == data->next || (*a)->next->indx == data->next)
+	// {
+	// 	if ((*a)->next->indx == data->next)
+	// 		swap(a, 1, data);
+	// 	update_next(a, b, data);
+	// }
 	printf("Если есть след.число отправляем вниз, одновременно крутим Б, если надо:\n"); //delete
 	testing(*a, *b, data); // delete
 }
@@ -155,13 +171,12 @@ void	check_topa(t_stack **a, t_stack **b, t_data *data)
 	{
 		if ((*a)->next->indx == data->next)
 		{
-			if (!(*b) || !(*b)->next || (*b)->next->nb > (*b)->nb)
+			if (!(*b) || ((*b) && (*b)->indx == data->next + 1))
+			// if ((!(*b) || !(*b)->next) || (*b)->next->nb > (*b)->nb) // sign
 				swap(a, 1, data);
 			else
 				swap_two(a, b, data);
 		}
-		// else
 		update_next(a, b, data);
-		// check_topb(a, b, data);
 	}
 }

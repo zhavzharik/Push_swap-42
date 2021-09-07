@@ -6,7 +6,7 @@
 /*   By: abridger <abridger@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/28 13:52:14 by abridger          #+#    #+#             */
-/*   Updated: 2021/09/04 23:31:59 by abridger         ###   ########.fr       */
+/*   Updated: 2021/09/07 23:27:48 by abridger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,10 @@ void	rotate_two(t_stack **a, t_stack **b, t_data *data)
 	t_stack	*tmp_b;
 	t_stack	*last_b;
 
+	if ((*a) && (*a)->next && (*b) && !(*b)->next)
+		rotate(a, 1, data);
+	if ((*a) && (*a)->next && !(*b))
+		rotate(a, 1, data);
 	if ((*a) && (*a)->next && (*b) && (*b)->next)
 	{
 		last_a = ft_lstlast(*a);
@@ -36,7 +40,7 @@ void	rotate_two(t_stack **a, t_stack **b, t_data *data)
 	}
 }
 
-void	rev_rotate_two(t_stack **a, t_stack **b, t_data *data)
+void	rev_rotate_two(t_stack **a, t_stack **b, t_data *data) // add if not b
 {
 	t_stack	*tmp_a;
 	t_stack	*last_a;
@@ -65,6 +69,10 @@ void	swap_two(t_stack **a, t_stack **b, t_data *data)
 	t_stack	*tmp_a;
 	t_stack	*tmp_b;
 
+	if ((*a) && (*a)->next && (*b) && !(*b)->next)
+		swap(a, 1, data);
+	if ((*a) && (*a)->next && !(*b))
+		swap(a, 1, data);
 	if ((*a) && (*a)->next && (*b) && (*b)->next)
 	{
 		tmp_a = (*a)->next;
@@ -84,4 +92,17 @@ void	swap_two(t_stack **a, t_stack **b, t_data *data)
 		write(1, "ss\n", 3);
 		data->operations += 1;
 	}
+}
+
+void	rotate_cond(t_stack **a, t_stack **b, t_data *data)
+{
+	t_stack	*last;
+
+	last = ft_lstlast(*b);
+	// if ((*b) && (*b)->next && (*b)->next->nb < (*b)->nb && (*a) && (*b)->nb != data->next)
+	// 	rotate_two(a, b, data);
+	if (last != NULL && last->nb < (*b)->nb && (*a) && (*b)->nb != data->next)
+		rotate_two(a, b, data);
+	else // if ((*a)->indx > data->mid)
+		rotate(a, 1, data);
 }

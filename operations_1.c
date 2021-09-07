@@ -6,7 +6,7 @@
 /*   By: abridger <abridger@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/25 20:26:07 by abridger          #+#    #+#             */
-/*   Updated: 2021/09/04 23:32:32 by abridger         ###   ########.fr       */
+/*   Updated: 2021/09/07 23:44:16 by abridger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,13 +96,29 @@ void	push(t_stack **from, t_stack **where, int flag, t_data *data)
 {
 	t_stack	*tmp;
 
-	if ((*from))
+	if ((*from) && (*from)->next)
 	{
 		tmp = (*from)->next;
 		(*from)->next = (*where);
 		(*where) = (*from);
 		(*from) = tmp;
 		// tmp = NULL;
+		if (flag == 1)
+		{
+			write(1, "pa\n", 3);
+			data->operations += 1;
+		}
+		if (flag == 2)
+		{
+			write(1, "pb\n", 3);
+			data->operations += 1;
+		}
+	}
+	else if ((*from)->next == NULL)
+	{
+		(*from)->next = (*where);
+		(*where) = (*from);
+		(*from) = NULL;
 		if (flag == 1)
 		{
 			write(1, "pa\n", 3);
