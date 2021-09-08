@@ -6,7 +6,7 @@
 /*   By: abridger <abridger@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/04 20:30:24 by abridger          #+#    #+#             */
-/*   Updated: 2021/09/08 16:45:55 by abridger         ###   ########.fr       */
+/*   Updated: 2021/09/08 18:21:48 by abridger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <limits.h>
+# include <stdio.h> // delete
 
 typedef struct s_stack
 {
@@ -88,5 +89,8 @@ void	check_topa(t_stack **a, t_stack **b, t_data *data);
 void	rotate_cond(t_stack **a, t_stack **b, t_data *data);
 void	sort_b(t_stack **a, t_stack **b, t_data *data);
 void	check_topalast(t_stack **a, t_stack **b, t_data *data);
+void	ft_print_stack(const t_stack *a, t_data *data); // for check
+void	ft_print_order(const t_stack *a); // для проверки, потом удалить функцию
+void	testing(t_stack *a, t_stack *b, t_data *data); // delete
 
 #endif

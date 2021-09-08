@@ -6,7 +6,7 @@
 /*   By: abridger <abridger@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/03 18:55:50 by abridger          #+#    #+#             */
-/*   Updated: 2021/09/08 16:44:06 by abridger         ###   ########.fr       */
+/*   Updated: 2021/09/08 22:16:47 by abridger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ void	process_game(t_stack **a, t_stack **b, t_data *data)
 		sort_b(a, b, data);
 		check_topalast(a, b, data);
 	}
+	// printf("End process_game\n"); //delete
+	// testing(*a, *b, data); // delete
 }
 
 void	update_max(t_data *data)
@@ -49,21 +51,36 @@ void	process_unsorted(t_stack **a, t_stack **b, t_data *data)
 {
 	t_stack	*unsorted;
 
-	update_max(data);
-	unsorted = lastbutone_unsorted(*a);
-	process_a(a, b, data, unsorted);
-	update_mid(data, b);
-	while (ft_lstlast(*a)->flag == 0 && (*b)->indx != data->next)
-		rev_rotate_two(a, b, data);
-	while (ft_lstlast(*a)->flag == 0 && ft_lstlast(*a)->indx != data->next - 1
-		&& ft_lstlastbutone(*a)->indx != data->next - 2)
-		rev_rotate(a, 1, data);
-	while (*b)
+	if (whether_sorted(*a, data) != 1)
 	{
-		process_b(a, b, data);
+		update_max(data);
+		unsorted = lastbutone_unsorted(*a);
+		process_a(a, b, data, unsorted);
 		update_mid(data, b);
+		while (ft_lstlast(*a)->flag == 0 && (*b)->indx != data->next)
+			rev_rotate_two(a, b, data);
+		while (ft_lstlast(*a)->flag == 0
+			&& ft_lstlast(*a)->indx != data->next - 1
+			&& ft_lstlastbutone(*a)->indx != data->next - 2)
+			rev_rotate(a, 1, data);
+		// printf("After rev_rotate in process_unsorted\n");
+		// testing(*a, *b, data); // delete
+		while (*b) // && whether_sorted(*a, data) != 1)
+		{
+			// printf("Start while B in process_unsorted\n"); // delete
+			process_b(a, b, data);
+			// printf("In while B in process_unsorted\n"); // delete
+			// testing(*a, *b, data); // delete
+			update_mid(data, b);
+		}
+		// printf("After while b in process_unsorted\n");
+		// testing(*a, *b, data); // delete
+		check_topa(a, b, data);
 	}
-	check_topa(a, b, data);
+	// printf("End process_unsorted\n");
+	// testing(*a, *b, data); // delete
+	// if (whether_sorted(*a, data) == 1) // delete
+	// 	printf("Стек отсортирован (проверка в process_unsorted)\n"); // delete
 }
 
 void	game(t_stack **a, t_stack **b, t_data *data)
@@ -77,6 +94,8 @@ void	game(t_stack **a, t_stack **b, t_data *data)
 		process_game(a, b, data);
 		update_max(data);
 		process_unsorted(a, b, data);
+		// if (whether_sorted(*a, data) == 1) // delete
+		// 	printf("Стек отсортирован (проверка в game)\n"); // delete
 	}
 }
 
@@ -86,10 +105,12 @@ void	check_topa(t_stack **a, t_stack **b, t_data *data)
 	{
 		if ((*a)->next->indx == data->next)
 		{
-			if (!(*b) || ((*b) && (*b)->indx == data->next + 1))
+			if (!(*b) || ((*b) && !(*b)->indx)
+				|| ((*b) && (*b)->indx == data->next + 1))
 				swap(a, 1, data);
 			else
-				swap_two(a, b, data);
+				swap(a, 1, data);
+				// swap_two(a, b, data); // возникает ошибка, это последний элемент, нужно условие, что это не last тогда swap_two
 		}
 		update_next(a, b, data);
 	}
