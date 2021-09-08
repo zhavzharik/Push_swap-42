@@ -6,7 +6,7 @@
 /*   By: abridger <abridger@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/04 21:39:57 by abridger          #+#    #+#             */
-/*   Updated: 2021/09/06 21:48:52 by abridger         ###   ########.fr       */
+/*   Updated: 2021/09/08 15:06:20 by abridger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,21 +73,6 @@ void	stack_four(t_stack **a, t_stack **b, t_data *data)
 			push(a, b, 2, data);
 			data->next += 1;
 		}
-		// else
-		// {
-		// 	rev_rotate(a, 1, data);
-		// 	if ((*a)->indx == 1)
-		// 		push(a, b, 2, data);
-		// 	else
-		// 	{
-		// 		rev_rotate(a, 1, data);
-		// 		if ((*a)->indx == 1)
-		// 			push(a, b, 2, data);
-		// 	}
-		// }
-
-		// stack_three(a, 1, data);
-		// push(b, a, 1, data);
 	}
 }
 
@@ -128,9 +113,4 @@ void	short_stack(t_stack **a, t_stack **b, t_data *data)
 	stack_three(a, 1, data);
 	while (*b)
 		push(b, a, 1, data);
-	testing(*a, *b, data); // delete
-	printf("Количество чисел = %d\n", data->size); // delete
-	printf("Количество команд = %d\n", data->operations); // delete
-	if (whether_sorted(*a, data) == 1) // delete
-		printf("Стек отсортирован (проверка в short_stack)\n"); // delete
 }

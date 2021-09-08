@@ -6,7 +6,7 @@
 /*   By: abridger <abridger@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/27 15:43:33 by abridger          #+#    #+#             */
-/*   Updated: 2021/09/04 20:30:47 by abridger         ###   ########.fr       */
+/*   Updated: 2021/09/08 16:28:00 by abridger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ t_stack	*ft_lstlast(t_stack *lst)
 t_stack	*ft_lstlastbutone(t_stack *lst)
 {
 	if (!lst)
-		ft_puterror();
+		return (NULL);
 	if (lst->next == NULL)
 		return (NULL);
 	while (lst->next->next)

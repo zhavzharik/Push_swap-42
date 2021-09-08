@@ -6,7 +6,7 @@
 #    By: abridger <abridger@student.21-school.ru    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/08/04 20:22:10 by abridger          #+#    #+#              #
-#    Updated: 2021/09/06 22:17:22 by abridger         ###   ########.fr        #
+#    Updated: 2021/09/08 16:47:19 by abridger         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,6 @@ SRC = 	push_swap.c		\
 		parser.c		\
 		ft_atoi.c		\
 		ft_str.c		\
-		ft_split.c		\
 		sorting.c		\
 		operations_1.c	\
 		operations_2.c	\
