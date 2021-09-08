@@ -6,7 +6,7 @@
 /*   By: abridger <abridger@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/04 21:48:52 by abridger          #+#    #+#             */
-/*   Updated: 2021/09/03 17:20:53 by abridger         ###   ########.fr       */
+/*   Updated: 2021/09/08 16:22:03 by abridger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,6 @@ void	check_argv(int argc, char **argv)
 	int	len;
 
 	i = 1;
-	if (argc < 1) // ??
-		ft_puterror(); // ??
 	while (i < argc)
 	{
 		len = 0;
@@ -45,29 +43,6 @@ void	check_argv(int argc, char **argv)
 		}
 		i++;
 	}
-}
-
-void	check_string(int argc, char **argv) // need to fix
-{
-	int		i;
-	int		j;
-	int		*array;
-
-	if (argc == 2)
-		array = ft_split(argv[argc - 1], ' ');
-	i = 0;
-	while (i < (int)ft_words_nb(argv[argc - 1], ' '))
-	{
-		j = i + 1;
-		while (j < (int)ft_words_nb(argv[argc - 1], ' '))
-		{
-			if (array[i] == array[j])
-				ft_puterror();
-			j++;
-		}
-		i++;
-	}
-	free(array);
 }
 
 void	check_duplicate(int argc, t_data *data)

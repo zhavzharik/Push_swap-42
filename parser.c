@@ -6,7 +6,7 @@
 /*   By: abridger <abridger@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/05 20:27:32 by abridger          #+#    #+#             */
-/*   Updated: 2021/09/03 21:02:44 by abridger         ###   ########.fr       */
+/*   Updated: 2021/09/08 15:34:30 by abridger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,44 +54,5 @@ void	from_array(t_stack **a, t_data *data)
 		j = get_index(data, i);
 		ft_lstadd_front(a, data->array[i], j);
 		i--;
-	}
-}
-
-void	ft_print_stack(const t_stack *a, t_data *data)
-{
-	if (a)
-	{
-		ft_putstr("Number\t");
-		ft_putstr("Order\t");
-		ft_putstr("Flag\t");
-		ft_putstr("Max\t");
-		ft_putstr("Mid\t");
-		ft_putstr("Next\n");
-	}
-	while (a)
-	{
-		ft_putnbr(a->nb);
-		ft_putchar('\t');
-		ft_putnbr(a->indx);
-		ft_putchar('\t');
-		ft_putnbr(a->flag);
-		ft_putchar('\t');
-		ft_putnbr(data->max);
-		ft_putchar('\t');
-		ft_putnbr(data->mid);
-		ft_putchar('\t');
-		ft_putnbr(data->next);
-		ft_putchar('\n');
-		a = a->next;
-	}
-}
-
-void	ft_print_order(const t_stack *a) // для проверки, потом удалить функцию
-{
-	while (a)
-	{
-		ft_putnbr(a->indx);
-		ft_putchar('\n');
-		a = a->next;
 	}
 }
