@@ -6,7 +6,7 @@
 /*   By: abridger <abridger@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 22:06:37 by abridger          #+#    #+#             */
-/*   Updated: 2021/09/08 22:11:04 by abridger         ###   ########.fr       */
+/*   Updated: 2021/09/09 20:18:33 by abridger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,4 @@ void	process_btail(t_stack **a, t_stack **b, t_data *data)
 		update_next(a, b, data);
 		check_topa(a, b, data);
 	}
-	// else
-	// {
-	// 	// update_next(a, b, data);
-	// 	check_topa(a, b, data);
-	// }
 }

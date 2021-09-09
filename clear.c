@@ -6,7 +6,7 @@
 /*   By: abridger <abridger@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/31 22:13:15 by abridger          #+#    #+#             */
-/*   Updated: 2021/09/08 22:43:50 by abridger         ###   ########.fr       */
+/*   Updated: 2021/09/09 16:50:01 by abridger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ void	ft_lstclear(t_stack **lst)
 		free(temp);
 	}
 	*lst = NULL;
+	temp = NULL;
+	curr = NULL;
 }
 
 void	ft_structclear(t_data *data)
@@ -35,10 +37,17 @@ void	ft_structclear(t_data *data)
 	if (data)
 	{
 		if (data->array)
+		{
 			free(data->array);
+			data->array = NULL;
+		}
 		if (data->sorted)
+		{
 			free(data->sorted);
+			data->array = NULL;
+		}
 		free(data);
+		data = NULL;
 	}
 }
 
