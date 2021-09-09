@@ -6,7 +6,7 @@
 /*   By: abridger <abridger@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/04 20:30:24 by abridger          #+#    #+#             */
-/*   Updated: 2021/09/09 20:16:25 by abridger         ###   ########.fr       */
+/*   Updated: 2021/09/09 22:12:03 by abridger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,5 +87,14 @@ void	check_topa(t_stack **a, t_stack **b, t_data *data);
 void	rotate_cond(t_stack **a, t_stack **b, t_data *data);
 void	sort_b(t_stack **a, t_stack **b, t_data *data);
 void	check_topalast(t_stack **a, t_stack **b, t_data *data);
+void	rotate_check(t_stack **curr); // for bonus
+void	swap_check(t_stack **curr);
+void	rev_rotatecheck(t_stack **curr);
+void	push_check(t_stack **from, t_stack **where);
+void	rotate_twocheck(t_stack **a, t_stack **b);
+void	rev_rotate_twocheck(t_stack **a, t_stack **b);
+void	swap_twocheck(t_stack **a, t_stack **b);
+
+
 
 #endif
