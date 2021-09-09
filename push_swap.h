@@ -6,7 +6,7 @@
 /*   By: abridger <abridger@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/04 20:30:24 by abridger          #+#    #+#             */
-/*   Updated: 2021/09/08 18:21:48 by abridger         ###   ########.fr       */
+/*   Updated: 2021/09/09 20:16:25 by abridger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <limits.h>
-# include <stdio.h> // delete
 
 typedef struct s_stack
 {
@@ -60,7 +59,6 @@ t_stack	*ft_lstlastbutone(t_stack *lst);
 void	rev_rotate(t_stack **curr, int flag, t_data *data);
 void	swap_two(t_stack **a, t_stack **b, t_data *data);
 void	push(t_stack **from, t_stack **where, int flag, t_data *data);
-t_stack	*ft_lstinit(void);
 void	rotate_two(t_stack **a, t_stack **b, t_data *data);
 void	rev_rotate_two(t_stack **a, t_stack **b, t_data *data);
 t_data	*init_struct(int argc, char **argv);
@@ -89,8 +87,5 @@ void	check_topa(t_stack **a, t_stack **b, t_data *data);
 void	rotate_cond(t_stack **a, t_stack **b, t_data *data);
 void	sort_b(t_stack **a, t_stack **b, t_data *data);
 void	check_topalast(t_stack **a, t_stack **b, t_data *data);
-void	ft_print_stack(const t_stack *a, t_data *data); // for check
-void	ft_print_order(const t_stack *a); // для проверки, потом удалить функцию
-void	testing(t_stack *a, t_stack *b, t_data *data); // delete
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: abridger <abridger@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/27 15:43:33 by abridger          #+#    #+#             */
-/*   Updated: 2021/09/08 16:28:00 by abridger         ###   ########.fr       */
+/*   Updated: 2021/09/09 20:15:02 by abridger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,15 +30,6 @@ t_stack	*ft_lstlastbutone(t_stack *lst)
 	while (lst->next->next)
 		lst = lst->next;
 	return (lst);
-}
-
-t_stack	*ft_lstinit(void)
-{
-	t_stack	*new;
-
-	new = (t_stack *) malloc(sizeof(t_stack));
-	new = NULL;
-	return (new);
 }
 
 t_stack	*lastbutone_unsorted(t_stack *lst)

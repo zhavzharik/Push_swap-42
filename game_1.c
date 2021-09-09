@@ -6,7 +6,7 @@
 /*   By: abridger <abridger@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/30 16:46:08 by abridger          #+#    #+#             */
-/*   Updated: 2021/09/08 22:11:52 by abridger         ###   ########.fr       */
+/*   Updated: 2021/09/09 20:18:42 by abridger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,10 +64,7 @@ void	process_b(t_stack **a, t_stack **b, t_data *data)
 	if ((whether_sorted(*a, data) != 1 && (*b))
 		|| (whether_sorted(*a, data) == 1 && (*b)))
 	{
-		// printf("Start process B\n"); //delete
-		// testing(*a, *b, data); // delete
 		last = ft_lstlast((*b));
-		// printf("Last number: %d\t", last->nb); // delete
 		while ((*b)->next != last->next)
 		{
 			if ((*b)->indx >= data->mid || (*b)->indx == data->next)
@@ -80,7 +77,7 @@ void	process_b(t_stack **a, t_stack **b, t_data *data)
 			else
 				rotate(b, 2, data);
 		}
-		if ((*b)) // if не нужен? проверить еще раз
+		if ((*b))
 			process_btail(a, b, data);
 	}
 }
