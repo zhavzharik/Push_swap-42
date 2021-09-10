@@ -1,38 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abridger <abridger@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/04 20:29:06 by abridger          #+#    #+#             */
-/*   Updated: 2021/09/10 19:17:16 by abridger         ###   ########.fr       */
+/*   Created: 2021/09/10 20:50:58 by abridger          #+#    #+#             */
+/*   Updated: 2021/09/10 21:35:17 by abridger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	main(int argc, char **argv)
+char	*ft_strdup(char *s1)
 {
-	t_stack	*a;
-	t_stack	*b;
-	t_data	*data;
+	char	*str;
+	size_t	len;
+	size_t	i;
 
-	if (argc == 1) // if no arg, stops and displays nothing
-		exit (0);
-	a = NULL;
-	data = init_struct(argc, argv);
-	if (!data)
-		exit (0);
-	sorting_arr(data);
-	from_array(&a, data);
-	b = NULL;
-	if (whether_sorted(a, data) == 1)
-		exit (0);
-	if (data->size < 6)
-		short_stack(&a, &b, data);
-	else
-		game(&a, &b, data);
-	ft_allclear(&a, &b, data);
-	return (0);
+	len = ft_strlen(s1);
+	str = (char *)malloc(sizeof(char) * len + 1);
+	i = 0;
+	if (str)
+	{
+		while (i < len)
+		{
+			str[i] = s1[i];
+			i++;
+		}
+		str[i] = '\0';
+	}
+	return (str);
+	if (!str)
+		return (NULL);
 }

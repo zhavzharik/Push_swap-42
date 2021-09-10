@@ -6,7 +6,7 @@
 #    By: abridger <abridger@student.21-school.ru    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/08/04 20:22:10 by abridger          #+#    #+#              #
-#    Updated: 2021/09/09 21:58:31 by abridger         ###   ########.fr        #
+#    Updated: 2021/09/10 21:32:18 by abridger         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,7 +40,10 @@ SRC_CH =	checker.c		\
 			check_oper_1.c	\
 			check_oper_2.c	\
 			ft_lst.c		\
-			clear.c
+			clear.c			\
+			ft_strdup.c		\
+			ft_strcmp.c		\
+			read_exec.c
 
 
 OBJ_PS = $(SRC_PS:.c=.o)

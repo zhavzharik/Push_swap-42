@@ -1,38 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abridger <abridger@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/04 20:29:06 by abridger          #+#    #+#             */
-/*   Updated: 2021/09/10 19:17:16 by abridger         ###   ########.fr       */
+/*   Created: 2021/09/10 20:53:25 by abridger          #+#    #+#             */
+/*   Updated: 2021/09/10 20:54:16 by abridger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	main(int argc, char **argv)
+int	ft_strcmp(const char *s1, const char *s2)
 {
-	t_stack	*a;
-	t_stack	*b;
-	t_data	*data;
+	size_t			i;
+	unsigned char	*str1;
+	unsigned char	*str2;
 
-	if (argc == 1) // if no arg, stops and displays nothing
-		exit (0);
-	a = NULL;
-	data = init_struct(argc, argv);
-	if (!data)
-		exit (0);
-	sorting_arr(data);
-	from_array(&a, data);
-	b = NULL;
-	if (whether_sorted(a, data) == 1)
-		exit (0);
-	if (data->size < 6)
-		short_stack(&a, &b, data);
-	else
-		game(&a, &b, data);
-	ft_allclear(&a, &b, data);
+	i = 0;
+	str1 = (unsigned char *) s1;
+	str2 = (unsigned char *) s2;
+	while ((str1[i] != '\0' || str2[i] != '\0'))
+	{
+		if (str1[i] != str2[i])
+			return (str1[i] - str2[i]);
+		i++;
+	}
 	return (0);
 }
