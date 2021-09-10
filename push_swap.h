@@ -6,7 +6,7 @@
 /*   By: abridger <abridger@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/04 20:30:24 by abridger          #+#    #+#             */
-/*   Updated: 2021/09/09 22:12:03 by abridger         ###   ########.fr       */
+/*   Updated: 2021/09/10 21:51:13 by abridger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,16 @@ typedef struct s_data
 	int				next;
 	int				mid;
 	int				max;
-	int				operations;
+	int				operations; // delete
 }					t_data;
+
+// typedef struct s_action
+// {
+// 	char			*instr;
+// }					t_action; // для записи массива строк с инструкциями
+
+typedef void (*action)(t_stack **a, t_stack **b);
+enum	e_instr {sa, sb, ss, pa, pb, ra, rb, rr, rra, rrb, rrr};
 
 void	ft_puterror(void);
 int		ft_atoi(const char *str);
@@ -94,7 +102,10 @@ void	push_check(t_stack **from, t_stack **where);
 void	rotate_twocheck(t_stack **a, t_stack **b);
 void	rev_rotate_twocheck(t_stack **a, t_stack **b);
 void	swap_twocheck(t_stack **a, t_stack **b);
-
-
+char	*ft_strdup(char *s1); // add libft folder and change Makefile
+int		ft_strcmp(const char *s1, const char *s2);
+int		reading_instr(int rd, char **line);
+char	**create_array_instr(void);
+void	get_execute(t_stack **a, t_stack **b);
 
 #endif
