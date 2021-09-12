@@ -6,13 +6,13 @@
 /*   By: abridger <abridger@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/28 13:52:14 by abridger          #+#    #+#             */
-/*   Updated: 2021/09/08 16:31:21 by abridger         ###   ########.fr       */
+/*   Updated: 2021/09/12 18:31:55 by abridger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	rotate_two(t_stack **a, t_stack **b, t_data *data)
+void	rotate_two(t_stack **a, t_stack **b, int flag)//t_data *data)
 {
 	t_stack	*tmp_a;
 	t_stack	*last_a;
@@ -21,7 +21,7 @@ void	rotate_two(t_stack **a, t_stack **b, t_data *data)
 
 	if (((*a) && (*a)->next && !(*b))
 		|| ((*a) && (*a)->next && (*b) && !(*b)->next))
-		rotate(a, 1, data);
+		rotate(a, 1); //, data);
 	else if ((*a) && (*a)->next && (*b) && (*b)->next)
 	{
 		last_a = ft_lstlast(*a);
@@ -34,12 +34,13 @@ void	rotate_two(t_stack **a, t_stack **b, t_data *data)
 		last_b->next = (*b);
 		(*b)->next = NULL;
 		(*b) = tmp_b;
-		write(1, "rr\n", 3);
-		data->operations += 1;
+		if (flag == 3)
+			write(1, "rr\n", 3);
+		// data->operations += 1;
 	}
 }
 
-void	rev_rotate_two(t_stack **a, t_stack **b, t_data *data)
+void	rev_rotate_two(t_stack **a, t_stack **b, int flag) // t_data *data)
 {
 	t_stack	*tmp_a;
 	t_stack	*last_a;
@@ -48,7 +49,7 @@ void	rev_rotate_two(t_stack **a, t_stack **b, t_data *data)
 
 	if (((*a) && (*a)->next && !(*b))
 		|| ((*a) && (*a)->next && (*b) && !(*b)->next))
-		rev_rotate(a, 1, data);
+		rev_rotate(a, 1); //, data);
 	else if ((*a) && (*a)->next && (*b) && (*b)->next)
 	{
 		last_a = ft_lstlast(*a);
@@ -61,19 +62,20 @@ void	rev_rotate_two(t_stack **a, t_stack **b, t_data *data)
 		last_b->next = (*b);
 		tmp_b->next = NULL;
 		(*b) = last_b;
-		write(1, "rrr\n", 4);
-		data->operations += 1;
+		if (flag == 3)
+			write(1, "rrr\n", 4);
+		// data->operations += 1;
 	}
 }
 
-void	swap_two(t_stack **a, t_stack **b, t_data *data)
+void	swap_two(t_stack **a, t_stack **b, int flag) //, t_data *data)
 {
 	t_stack	*tmp_a;
 	t_stack	*tmp_b;
 
 	if (((*a) && (*a)->next && (*b) && !(*b)->next)
 		|| ((*a) && (*a)->next && !(*b)))
-		swap(a, 1, data);
+		swap(a, 1); //, data);
 	else if ((*a) && (*a)->next && (*b) && (*b)->next)
 	{
 		tmp_a = (*a)->next;
@@ -90,8 +92,9 @@ void	swap_two(t_stack **a, t_stack **b, t_data *data)
 			(*b)->next = NULL;
 		tmp_b->next = (*b);
 		(*b) = tmp_b;
-		write(1, "ss\n", 3);
-		data->operations += 1;
+		if (flag == 3)
+			write(1, "ss\n", 3);
+		// data->operations += 1;
 	}
 }
 
@@ -101,7 +104,7 @@ void	rotate_cond(t_stack **a, t_stack **b, t_data *data)
 
 	last = ft_lstlast(*b);
 	if (last != NULL && last->nb < (*b)->nb && (*a) && (*b)->nb != data->next)
-		rotate_two(a, b, data);
+		rotate_two(a, b, 3);
 	else
-		rotate(a, 1, data);
+		rotate(a, 1);
 }
