@@ -6,7 +6,7 @@
 /*   By: abridger <abridger@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/10 17:21:06 by abridger          #+#    #+#             */
-/*   Updated: 2021/09/11 21:23:12 by abridger         ###   ########.fr       */
+/*   Updated: 2021/09/12 20:21:06 by abridger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	reading_instr(int rd, char **line)
 	i = 0;
 	while (rd > 0 && ch != '\n')
 	{
-		rd = read(1, &ch, 1);
+		rd = read(STDIN_FILENO, &ch, 1);
 		buffer[i++] = ch;
 	}
 	i++;
@@ -51,23 +51,23 @@ char	**create_array_instr(void)
 	return (instr);
 }
 
-t_action	**create_array_function(t_stack **a, t_stack **b)
+t_action	*create_array_function(void)
 {
 	t_action	*array_func;
 
-	(*array_func) = NULL;
+	array_func = NULL;
 	array_func = (t_action *)malloc(11 * sizeof(t_action));
-	(*array_func)[sa] = &swap_a;
-	(*array_func)[sb] = &swap_b;
-	(*array_func)[ss] = &swap_twocheck(a, b);
-	(*array_func)[pa] = &push_check(b, a);
-	(*array_func)[pb] = &push_check(a, b);
-	(*array_func)[ra] = &rotate_check(a);
-	(*array_func)[rb] = &rotate_check(b);
-	(*array_func)[rr] = &rotate_twocheck(a, b);
-	(*array_func)[rra] = &rev_rotatecheck(a);
-	(*array_func)[rrb] = &rev_rotatecheck(b);
-	(*array_func)[rrr] = &rev_rotate_twocheck(a, b);
+	array_func[sa] = swap_a;
+	array_func[sb] = swap_b;
+	array_func[ss] = swap_s;
+	array_func[pa] = push_a;
+	array_func[pb] = push_b;
+	array_func[ra] = rotate_a;
+	array_func[rb] = rotate_b;
+	array_func[rr] = rotate_r;
+	array_func[rra] = rev_rotate_a;
+	array_func[rrb] = rev_rotate_b;
+	array_func[rrr] = rev_rotate_r;
 	return (array_func);
 }
 
@@ -75,14 +75,14 @@ void	get_execute(t_stack **a, t_stack **b)
 {
 	char		*line;
 	char		**instr;
-	t_action	**func;
+	t_action	*func;
 	int			i;
 	int			rd;
 
 	i = 0;
 	rd = 1;
 	instr = create_array_instr();
-	func = create_array_function(a, b);
+	func = create_array_function();
 	while (reading_instr(rd, &line))
 	{
 		while (instr[i] && ft_strcmp(instr[i], line))

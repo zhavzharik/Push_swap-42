@@ -6,7 +6,7 @@
 /*   By: abridger <abridger@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/28 15:55:57 by abridger          #+#    #+#             */
-/*   Updated: 2021/09/03 17:25:28 by abridger         ###   ########.fr       */
+/*   Updated: 2021/09/12 18:46:45 by abridger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ t_data	*init_struct(int argc, char **argv)
 		data->next = 1;
 		data->mid = data->size / 2 + data->next;
 		data->max = data->size;
-		data->operations = 0;
+		// data->operations = 0;
 	}
 	return (data);
 }
