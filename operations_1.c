@@ -6,13 +6,13 @@
 /*   By: abridger <abridger@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/25 20:26:07 by abridger          #+#    #+#             */
-/*   Updated: 2021/09/12 18:25:16 by abridger         ###   ########.fr       */
+/*   Updated: 2021/09/13 22:55:45 by abridger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	rotate(t_stack **curr, int flag) //, t_data *data)
+void	rotate(t_stack **curr, int flag)
 {
 	t_stack	*tmp;
 	t_stack	*last;
@@ -27,17 +27,15 @@ void	rotate(t_stack **curr, int flag) //, t_data *data)
 		if (flag == 1)
 		{
 			write(1, "ra\n", 3);
-			// data->operations += 1;
 		}
 		if (flag == 2)
 		{
 			write(1, "rb\n", 3);
-			// data->operations += 1;
 		}
 	}
 }
 
-void	swap(t_stack **curr, int flag) //, t_data *data)
+void	swap(t_stack **curr, int flag)
 {
 	t_stack	*tmp;
 
@@ -53,17 +51,15 @@ void	swap(t_stack **curr, int flag) //, t_data *data)
 		if (flag == 1)
 		{
 			write(1, "sa\n", 3);
-			// data->operations += 1;
 		}
 		if (flag == 2)
 		{
 			write(1, "sb\n", 3);
-			// data->operations += 1;
 		}
 	}
 }
 
-void	rev_rotate(t_stack **curr, int flag) //, t_data *data)
+void	rev_rotate(t_stack **curr, int flag)
 {
 	t_stack	*tmp;
 	t_stack	*last;
@@ -78,17 +74,15 @@ void	rev_rotate(t_stack **curr, int flag) //, t_data *data)
 		if (flag == 1)
 		{
 			write(1, "rra\n", 4);
-			// data->operations += 1;
 		}
 		if (flag == 2)
 		{
 			write(1, "rrb\n", 4);
-			// data->operations += 1;
 		}
 	}
 }
 
-void	push(t_stack **from, t_stack **where, int flag) //, t_data *data)
+void	push(t_stack **from, t_stack **where, int flag)
 {
 	t_stack	*tmp;
 
@@ -103,12 +97,10 @@ void	push(t_stack **from, t_stack **where, int flag) //, t_data *data)
 		if (flag == 1)
 		{
 			write(1, "pa\n", 3);
-			// data->operations += 1;
 		}
 		if (flag == 2)
 		{
 			write(1, "pb\n", 3);
-			// data->operations += 1;
 		}
 	}
 }

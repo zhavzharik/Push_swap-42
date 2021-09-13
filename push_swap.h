@@ -6,7 +6,7 @@
 /*   By: abridger <abridger@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/04 20:30:24 by abridger          #+#    #+#             */
-/*   Updated: 2021/09/12 20:30:14 by abridger         ###   ########.fr       */
+/*   Updated: 2021/09/13 22:51:37 by abridger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,13 +33,7 @@ typedef struct s_data
 	int				next;
 	int				mid;
 	int				max;
-	// int				operations; // delete
 }					t_data;
-
-// typedef struct s_action
-// {
-// 	char			*instr;
-// }					t_action; // для записи массива строк с инструкциями
 
 typedef void	(*t_action)(t_stack **, t_stack **);
 enum	e_instr {sa, sb, ss, pa, pb, ra, rb, rr, rra, rrb, rrr};
@@ -61,14 +55,14 @@ int			get_max(t_data *data);
 int			next_min(t_data *data, int min);
 void		sorting_arr(t_data *data);
 t_stack		*ft_lstlast(t_stack *lst);
-void		rotate(t_stack **curr, int flag); //, t_data *data);
-void		swap(t_stack **curr, int flag); //, t_data *data);
+void		rotate(t_stack **curr, int flag);
+void		swap(t_stack **curr, int flag);
 t_stack		*ft_lstlastbutone(t_stack *lst);
-void		rev_rotate(t_stack **curr, int flag); //, t_data *data);
-void		swap_two(t_stack **a, t_stack **b, int flag); //t_data *data);
-void		push(t_stack **from, t_stack **where, int flag); //, t_data *data);
-void		rotate_two(t_stack **a, t_stack **b, int flag); // t_data *data);
-void		rev_rotate_two(t_stack **a, t_stack **b, int flag); //t_data *data);
+void		rev_rotate(t_stack **curr, int flag);
+void		swap_two(t_stack **a, t_stack **b, int flag);
+void		push(t_stack **from, t_stack **where, int flag);
+void		rotate_two(t_stack **a, t_stack **b, int flag);
+void		rev_rotate_two(t_stack **a, t_stack **b, int flag);
 t_data		*init_struct(int argc, char **argv);
 void		process_a(t_stack **a, t_stack **b, t_data *data, t_stack *last);
 void		update_mid(t_data *data, t_stack **b);
@@ -86,8 +80,8 @@ void		process_unsorted(t_stack **a, t_stack **b, t_data *data);
 t_stack		*lastbutone_unsorted(t_stack *lst);
 int			ft_lstsize(t_stack *lst);
 void		game(t_stack **a, t_stack **b, t_data *data);
-void		stack_two(t_stack **a); //, t_data *data);
-void		stack_three(t_stack **curr, int flag); //, t_data *data);
+void		stack_two(t_stack **a);
+void		stack_three(t_stack **curr, int flag);
 void		stack_four(t_stack **a, t_stack **b, t_data *data);
 void		stack_five(t_stack **a, t_stack **b, t_data *data);
 void		short_stack(t_stack **a, t_stack **b, t_data *data);
@@ -95,16 +89,9 @@ void		check_topa(t_stack **a, t_stack **b, t_data *data);
 void		rotate_cond(t_stack **a, t_stack **b, t_data *data);
 void		sort_b(t_stack **a, t_stack **b, t_data *data);
 void		check_topalast(t_stack **a, t_stack **b, t_data *data);
-// void		rotate_check(t_stack **curr); // for bonus
-// void		swap_check(t_stack **curr);
-// void		rev_rotatecheck(t_stack **curr);
-// void		push_check(t_stack **from, t_stack **where);
-// void		rotate_twocheck(t_stack **a, t_stack **b);
-// void		rev_rotate_twocheck(t_stack **a, t_stack **b);
-// void		swap_twocheck(t_stack **a, t_stack **b);
 char		*ft_strdup(char *s1); // add libft folder and change Makefile
 int			ft_strcmp(const char *s1, const char *s2);
-int			reading_instr(int rd, char **line);
+int			reading_instr(int rd, char **line); // for bonus
 char		**create_array_instr(void);
 t_action	*create_array_function(void);
 void		get_execute(t_stack **a, t_stack **b);
