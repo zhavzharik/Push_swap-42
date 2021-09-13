@@ -6,7 +6,7 @@
 /*   By: abridger <abridger@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/30 16:46:08 by abridger          #+#    #+#             */
-/*   Updated: 2021/09/12 18:41:25 by abridger         ###   ########.fr       */
+/*   Updated: 2021/09/13 23:07:24 by abridger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	process_a(t_stack **a, t_stack **b, t_data *data, t_stack *last)
 			if (((*a)->indx <= data->mid && (*a)->nb != data->next)
 				|| ((*a)->indx <= data->mid && (*a)->nb == data->next
 					&& last->indx != data->next - 1))
-				push(a, b, 2); //, data);
+				push(a, b, 2);
 			else if ((*a)->nb == data->next && last->indx == data->next - 1)
 				update_next(a, b, data);
 			else
@@ -30,7 +30,7 @@ void	process_a(t_stack **a, t_stack **b, t_data *data, t_stack *last)
 		if (((*a)->indx <= data->mid && (*a)->nb != data->next)
 			|| ((*a)->indx <= data->mid && (*a)->nb == data->next
 				&& last->indx != data->next - 1))
-			push(a, b, 2); //, data);
+			push(a, b, 2);
 		else if ((*a)->nb == data->next && last->indx == data->next - 1)
 			update_next(a, b, data);
 		else
@@ -71,11 +71,11 @@ void	process_b(t_stack **a, t_stack **b, t_data *data)
 			{
 				check_topa(a, b, data);
 				(*b)->flag = data->flag;
-				push(b, a, 1); //, data);
+				push(b, a, 1);
 				update_next(a, b, data);
 			}
 			else
-				rotate(b, 2); //, data);
+				rotate(b, 2);
 		}
 		if ((*b))
 			process_btail(a, b, data);
@@ -94,7 +94,7 @@ void	update_next(t_stack **a, t_stack **b, t_data *data)
 		|| ((*a)->indx == data->next && (*b)->indx >= data->mid
 			&& last->indx == data->next - 1))
 	{
-		rotate(a, 1); //, data);
+		rotate(a, 1);
 		data->next += 1;
 	}
 	else if (((*a) && (*b) && (*a)->indx == data->next && (*b)->indx < data->mid
@@ -102,7 +102,7 @@ void	update_next(t_stack **a, t_stack **b, t_data *data)
 		|| ((*a) && (*b) && (*a)->indx == data->next && (*b)->indx < data->mid
 			&& last->indx == data->next - 1))
 	{
-		rotate_two(a, b, 3); // data);
+		rotate_two(a, b, 3);
 		data->next += 1;
 	}
 }
