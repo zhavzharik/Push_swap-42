@@ -6,7 +6,7 @@
 /*   By: abridger <abridger@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/04 20:30:24 by abridger          #+#    #+#             */
-/*   Updated: 2021/09/13 22:51:37 by abridger         ###   ########.fr       */
+/*   Updated: 2021/09/15 00:06:30 by abridger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,5 +106,6 @@ void		rotate_r(t_stack **a, t_stack **b);
 void		rev_rotate_a(t_stack **a, t_stack **b);
 void		rev_rotate_b(t_stack **a, t_stack **b);
 void		rev_rotate_r(t_stack **a, t_stack **b);
+void		ft_array_clear(char **instr, t_action *func);
 
 #endif
