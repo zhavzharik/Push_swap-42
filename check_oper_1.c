@@ -6,7 +6,7 @@
 /*   By: abridger <abridger@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/09 21:55:59 by abridger          #+#    #+#             */
-/*   Updated: 2021/09/12 20:44:39 by abridger         ###   ########.fr       */
+/*   Updated: 2021/09/14 18:01:06 by abridger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,26 @@ void	swap_b(t_stack **a, t_stack **b)
 
 void	swap_s(t_stack **a, t_stack **b)
 {
-	swap_two(a, b, 4);
+	t_stack	*tmp_a;
+	t_stack	*tmp_b;
+
+	if ((*a) && (*a)->next && (*b) && (*b)->next)
+	{
+		tmp_a = (*a)->next;
+		if ((*a)->next->next)
+			(*a)->next = (*a)->next->next;
+		else
+			(*a)->next = NULL;
+		tmp_a->next = (*a);
+		(*a) = tmp_a;
+		tmp_b = (*b)->next;
+		if ((*b)->next->next)
+			(*b)->next = (*b)->next->next;
+		else
+			(*b)->next = NULL;
+		tmp_b->next = (*b);
+		(*b) = tmp_b;
+	}
 }
 
 void	push_a(t_stack **a, t_stack **b)

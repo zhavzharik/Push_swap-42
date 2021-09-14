@@ -6,7 +6,7 @@
 /*   By: abridger <abridger@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/10 17:21:06 by abridger          #+#    #+#             */
-/*   Updated: 2021/09/13 23:01:24 by abridger         ###   ########.fr       */
+/*   Updated: 2021/09/14 23:58:48 by abridger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ char	**create_array_instr(void)
 {
 	char	**instr;
 
-	instr = (char **)malloc(12 * sizeof(char *));
+	instr = (char **)malloc(sizeof(char *) * 11);
 	(instr)[sa] = ft_strdup("sa\n\0");
 	(instr)[sb] = ft_strdup("sb\n\0");
 	(instr)[ss] = ft_strdup("ss\n\0");
@@ -47,7 +47,6 @@ char	**create_array_instr(void)
 	(instr)[rra] = ft_strdup("rra\n\0");
 	(instr)[rrb] = ft_strdup("rrb\n\0");
 	(instr)[rrr] = ft_strdup("rrr\n\0");
-	(instr)[11] = NULL;
 	return (instr);
 }
 
@@ -56,7 +55,7 @@ t_action	*create_array_function(void)
 	t_action	*array_func;
 
 	array_func = NULL;
-	array_func = (t_action *)malloc(12 * sizeof(t_action));
+	array_func = (t_action *)malloc(sizeof(11));
 	(array_func)[sa] = &swap_a;
 	(array_func)[sb] = &swap_b;
 	(array_func)[ss] = &swap_s;
@@ -68,7 +67,6 @@ t_action	*create_array_function(void)
 	(array_func)[rra] = &rev_rotate_a;
 	(array_func)[rrb] = &rev_rotate_b;
 	(array_func)[rrr] = &rev_rotate_r;
-	(array_func)[11] = NULL;
 	return (array_func);
 }
 
@@ -80,8 +78,6 @@ void	get_execute(t_stack **a, t_stack **b)
 	int			i;
 	int			rd;
 
-	(void)a;
-	(void)b;
 	rd = 1;
 	instr = create_array_instr();
 	func = create_array_function();
@@ -94,7 +90,10 @@ void	get_execute(t_stack **a, t_stack **b)
 			ft_puterror();
 		else
 			(func)[i](a, b);
+		if (line)
+			free(line);
 	}
-	free(instr);
-	free(func);
+	if (line)
+		free(line);
+	ft_array_clear(instr, func);
 }

@@ -6,7 +6,7 @@
 /*   By: abridger <abridger@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/09 22:04:31 by abridger          #+#    #+#             */
-/*   Updated: 2021/09/13 23:06:25 by abridger         ###   ########.fr       */
+/*   Updated: 2021/09/14 18:00:52 by abridger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,24 @@ void	rotate_b(t_stack **a, t_stack **b)
 
 void	rotate_r(t_stack **a, t_stack **b)
 {
-	rotate_two(a, b, 4);
+	t_stack	*tmp_a;
+	t_stack	*last_a;
+	t_stack	*tmp_b;
+	t_stack	*last_b;
+
+	if ((*a) && (*a)->next && (*b) && (*b)->next)
+	{
+		last_a = ft_lstlast(*a);
+		tmp_a = (*a)->next;
+		last_a->next = (*a);
+		(*a)->next = NULL;
+		(*a) = tmp_a;
+		last_b = ft_lstlast(*b);
+		tmp_b = (*b)->next;
+		last_b->next = (*b);
+		(*b)->next = NULL;
+		(*b) = tmp_b;
+	}
 }
 
 void	rev_rotate_a(t_stack **a, t_stack **b)
