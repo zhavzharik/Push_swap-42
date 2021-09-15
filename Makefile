@@ -6,7 +6,7 @@
 #    By: abridger <abridger@student.21-school.ru    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/08/04 20:22:10 by abridger          #+#    #+#              #
-#    Updated: 2021/09/14 23:52:36 by abridger         ###   ########.fr        #
+#    Updated: 2021/09/15 20:20:52 by abridger         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,9 @@ SRC_PS = 	push_swap.c		\
 			clear.c			\
 			game_2.c		\
 			short_stack.c	\
-			game_3.c
+			game_3.c		\
+			sorting_100.c	\
+			additional.c
 
 SRC_CH =	checker.c		\
 			ft_atoi.c		\
