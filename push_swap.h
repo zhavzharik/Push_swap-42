@@ -6,7 +6,7 @@
 /*   By: abridger <abridger@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/04 20:30:24 by abridger          #+#    #+#             */
-/*   Updated: 2021/09/15 00:06:30 by abridger         ###   ########.fr       */
+/*   Updated: 2021/09/15 20:56:22 by abridger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <limits.h>
+# include <stdio.h> // delete
 
 typedef struct s_stack
 {
@@ -107,5 +108,15 @@ void		rev_rotate_a(t_stack **a, t_stack **b);
 void		rev_rotate_b(t_stack **a, t_stack **b);
 void		rev_rotate_r(t_stack **a, t_stack **b);
 void		ft_array_clear(char **instr, t_action *func);
+int			max_index(t_stack *curr);
+int			check_position(t_stack *curr);
+void		first_step_100(t_stack **a, t_stack **b);
+void		second_step_100(t_stack **a, t_stack **b);
+void		stack_100(t_stack **a, t_stack **b, t_data *data);
+
+void		see_stack(const t_stack *a); // delete
+void		testing(t_stack *a, t_stack *b, t_data *data); //delete
+void		ft_print_stack(const t_stack *a, t_data *data); // delete
+void		testing_100(t_stack *a, t_stack *b);
 
 #endif
