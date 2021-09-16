@@ -6,7 +6,7 @@
 /*   By: abridger <abridger@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/04 20:30:24 by abridger          #+#    #+#             */
-/*   Updated: 2021/09/15 20:56:22 by abridger         ###   ########.fr       */
+/*   Updated: 2021/09/16 19:51:45 by abridger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <limits.h>
-# include <stdio.h> // delete
 
 typedef struct s_stack
 {
@@ -48,7 +47,8 @@ void		ft_putnbr(int n);
 void		ft_lstadd_front(t_stack **a, int number, int index);
 int			get_index(t_data *data, int i);
 void		from_array(t_stack **a, t_data *data);
-int			ft_isalpha(int c);
+int			ft_isdigit(int c);
+int			ft_isfirst(int c);
 void		check_argv(int argc, char **argv);
 void		check_duplicate(int argc, t_data *data);
 int			get_min(t_data *data);
@@ -90,6 +90,9 @@ void		check_topa(t_stack **a, t_stack **b, t_data *data);
 void		rotate_cond(t_stack **a, t_stack **b, t_data *data);
 void		sort_b(t_stack **a, t_stack **b, t_data *data);
 void		check_topalast(t_stack **a, t_stack **b, t_data *data);
+void		first_step_100(t_stack **a, t_stack **b);
+void		second_step_100(t_stack **a, t_stack **b);
+void		stack_100(t_stack **a, t_stack **b, t_data *data);
 char		*ft_strdup(char *s1); // add libft folder and change Makefile
 int			ft_strcmp(const char *s1, const char *s2);
 int			reading_instr(int rd, char **line); // for bonus
@@ -110,13 +113,5 @@ void		rev_rotate_r(t_stack **a, t_stack **b);
 void		ft_array_clear(char **instr, t_action *func);
 int			max_index(t_stack *curr);
 int			check_position(t_stack *curr);
-void		first_step_100(t_stack **a, t_stack **b);
-void		second_step_100(t_stack **a, t_stack **b);
-void		stack_100(t_stack **a, t_stack **b, t_data *data);
-
-void		see_stack(const t_stack *a); // delete
-void		testing(t_stack *a, t_stack *b, t_data *data); //delete
-void		ft_print_stack(const t_stack *a, t_data *data); // delete
-void		testing_100(t_stack *a, t_stack *b);
 
 #endif

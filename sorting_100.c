@@ -6,7 +6,7 @@
 /*   By: abridger <abridger@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/15 17:55:23 by abridger          #+#    #+#             */
-/*   Updated: 2021/09/15 22:42:54 by abridger         ###   ########.fr       */
+/*   Updated: 2021/09/16 19:21:46 by abridger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	max_index(t_stack *curr)
 	if (curr)
 	{
 		max_index = curr->indx;
-		while (curr->next)
+		while (curr != NULL)
 		{
 			if (max_index < curr->indx)
 				max_index = curr->indx;
@@ -47,9 +47,9 @@ int	check_position(t_stack *curr)
 		curr = curr->next;
 	}
 	if (pos > len / 2)
-		check = 1; // after middle of stack
+		check = 1;
 	else
-		check = 0; // before middle of stack
+		check = 0;
 	return (check);
 }
 
@@ -80,13 +80,24 @@ void	first_step_100(t_stack **a, t_stack **b)
 
 void	second_step_100(t_stack **a, t_stack **b)
 {
+	int	check;
+
 	while ((*b) != NULL)
 	{
-		if ((*b)->indx != max_index(*b) && !check_position(*b))
-			rotate(b, 2);
-		else if ((*b)->indx != max_index(*b) && check_position(*b))
-			rev_rotate(b, 2);
-		else if ((*b)->indx == max_index(*b))
+		check = max_index(*b);
+		if ((*b)->indx != check && !check_position(*b))
+		{
+			while ((*b)->indx != check)
+				rotate(b, 2);
+			push(b, a, 1);
+		}
+		else if ((*b)->indx != check && check_position(*b))
+		{
+			while ((*b)->indx != check)
+				rev_rotate(b, 2);
+			push(b, a, 1);
+		}
+		else if ((*b)->indx == check)
 			push(b, a, 1);
 	}
 }
@@ -95,10 +106,7 @@ void	stack_100(t_stack **a, t_stack **b, t_data *data)
 {
 	if (whether_sorted(*a, data) != 1)
 	{
-		testing_100(*a, *b); // delete
 		first_step_100(a, b);
-		testing_100(*a, *b); // delete
 		second_step_100(a, b);
-		testing_100(*a, *b); // delete
 	}
 }
