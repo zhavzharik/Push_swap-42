@@ -6,7 +6,7 @@
 /*   By: abridger <abridger@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/04 21:48:52 by abridger          #+#    #+#             */
-/*   Updated: 2021/09/13 22:59:48 by abridger         ###   ########.fr       */
+/*   Updated: 2021/09/16 19:50:47 by abridger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,17 @@ void	ft_puterror(void)
 	exit (0);
 }
 
-int	ft_isalpha(int c)
+int	ft_isdigit(int c)
 {
-	if ((c <= 90 && c >= 65) || (c <= 122 && c >= 97))
+	if (c <= 57 && c >= 48)
+		return (1);
+	else
+		return (0);
+}
+
+int	ft_isfirst(int c)
+{
+	if (c == 45 || c == 43 || (c <= 57 && c >= 48))
 		return (1);
 	else
 		return (0);
@@ -34,10 +42,12 @@ void	check_argv(int argc, char **argv)
 	i = 1;
 	while (i < argc)
 	{
-		len = 0;
+		if (!ft_isfirst(argv[i][0]))
+			ft_puterror();
+		len = 1;
 		while (len < ft_strlen(argv[i]))
 		{
-			if (ft_isalpha(argv[i][len]) == 1)
+			if (ft_isdigit(argv[i][len]) != 1)
 				ft_puterror();
 			len++;
 		}

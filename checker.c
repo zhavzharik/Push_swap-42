@@ -6,7 +6,7 @@
 /*   By: abridger <abridger@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/09 21:30:20 by abridger          #+#    #+#             */
-/*   Updated: 2021/09/13 22:49:32 by abridger         ###   ########.fr       */
+/*   Updated: 2021/09/16 19:50:11 by abridger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,6 @@ int	main(int argc, char **argv)
 	sorting_arr(data);
 	from_array(&a, data);
 	b = NULL;
-	if (whether_sorted(a, data) == 1)
-		exit (0);
 	get_execute(&a, &b);
 	if (whether_sorted(a, data) == 1 && !b)
 		write(1, "OK\n", 3);
