@@ -6,7 +6,7 @@
 /*   By: abridger <abridger@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/04 21:48:52 by abridger          #+#    #+#             */
-/*   Updated: 2021/09/17 19:10:17 by abridger         ###   ########.fr       */
+/*   Updated: 2021/09/17 21:46:15 by abridger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,14 @@
 int	check_first_ch(int c)
 {
 	if (c == 45 || c == 43 || (c <= 57 && c >= 48))
+		return (1);
+	else
+		return (0);
+}
+
+int	sign(int c)
+{
+	if (c == 45 || c == 43)
 		return (1);
 	else
 		return (0);
@@ -29,6 +37,8 @@ void	check_argv(int argc, char **argv)
 	while (i < argc)
 	{
 		if (!check_first_ch(argv[i][0]))
+			ft_puterror();
+		if (sign(argv[i][0]) && !argv[i][1])
 			ft_puterror();
 		len = 1;
 		while (len < ft_strlen(argv[i]))

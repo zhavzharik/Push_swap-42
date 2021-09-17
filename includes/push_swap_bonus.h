@@ -6,7 +6,7 @@
 /*   By: abridger <abridger@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/04 20:30:24 by abridger          #+#    #+#             */
-/*   Updated: 2021/09/17 20:03:13 by abridger         ###   ########.fr       */
+/*   Updated: 2021/09/17 21:49:12 by abridger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ enum	e_instr {sa, sb, ss, pa, pb, ra, rb, rr, rra, rrb, rrr};
 int			get_index(t_data *data, int i);
 void		from_array(t_stack **a, t_data *data);
 int			check_first_ch(int c);
+int			sign(int c);
 void		check_argv(int argc, char **argv);
 void		check_duplicate(int argc, t_data *data);
 int			get_min(t_data *data);
