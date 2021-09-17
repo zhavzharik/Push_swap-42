@@ -50,3 +50,11 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
+
+# Program
+checker
+checker_Mac
+push_swap
+pyviz.py
+
+.DS_Store
