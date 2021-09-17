@@ -6,50 +6,45 @@
 #    By: abridger <abridger@student.21-school.ru    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/08/04 20:22:10 by abridger          #+#    #+#              #
-#    Updated: 2021/09/16 19:22:36 by abridger         ###   ########.fr        #
+#    Updated: 2021/09/17 20:44:05 by abridger         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = push_swap
+NAME_PS = push_swap
 
-CHECKER = checker
+NAME_CH = checker
 
-SRC_PS = 	push_swap.c		\
-			check_argv.c	\
-			parser.c		\
-			ft_atoi.c		\
-			ft_str.c		\
-			sorting.c		\
-			operations_1.c	\
-			operations_2.c	\
-			ft_lst.c		\
-			structure.c		\
-			game_1.c		\
-			clear.c			\
-			game_2.c		\
-			short_stack.c	\
-			game_3.c		\
-			sorting_100.c
+SRC_PS = 	./src/push_swap.c				\
+			./src/check_argv.c				\
+			./src/parser.c					\
+			./src/sorting_array.c			\
+			./src/operations_1.c			\
+			./src/operations_2.c			\
+			./src/lst_utils.c				\
+			./src/structure.c				\
+			./src/game_1.c					\
+			./src/clear.c					\
+			./src/game_2.c					\
+			./src/short_stack.c				\
+			./src/game_3.c					\
+			./src/sorting_100.c
 
 
-SRC_CH =	checker.c		\
-			ft_atoi.c		\
-			structure.c		\
-			sorting.c		\
-			parser.c		\
-			check_argv.c	\
-			ft_str.c		\
-			operations_1.c	\
-			operations_2.c	\
-			check_oper_1.c	\
-			check_oper_2.c	\
-			check_oper_3.c	\
-			ft_lst.c		\
-			clear.c			\
-			ft_strdup.c		\
-			ft_strcmp.c		\
-			read_exec.c
+SRC_CH =	./bonus/checker.c				\
+			./bonus/check_oper_1.c			\
+			./bonus/check_oper_2.c			\
+			./bonus/check_oper_3.c			\
+			./bonus/read_exec.c				\
+			./bonus/structure_bonus.c		\
+			./bonus/sorting_array_bonus.c	\
+			./bonus/parser_bonus.c			\
+			./bonus/check_argv_bonus.c		\
+			./bonus/operations_1_bonus.c	\
+			./bonus/operations_2_bonus.c	\
+			./bonus/lst_utils_bonus.c		\
+			./bonus/clear_bonus.c
 
+LIBFT_DIR	=	./libft/
 
 OBJ_PS = $(SRC_PS:.c=.o)
 
@@ -59,27 +54,38 @@ CC = gcc
 
 REM = rm -f
 
-INCL = push_swap.h
+INCL = ./includes/push_swap.h
+
+INCL_B = ./includes/push_swap_bonus.h
+
+LIBFT = $(addprefix $(LIBFT_DIR), libft.a)
 
 FLAGS = -Wall -Wextra -Werror
 
-all: $(NAME) $(CHECKER)
+all: $(NAME_PS)
 
-%.o : %.c $(INCL) Makefile
+%.o : %.c $(INCL) $(INCL_B) Makefile
 	$(CC) $(FLAGS) -c $< -o $@
 
-$(NAME): $(OBJ_PS)
-	$(CC) $(FLAGS) $(OBJ_PS) -o $(NAME)
+$(NAME_PS): $(OBJ_PS) $(LIBFT)
+	@$(CC) $(FLAGS) $(OBJ_PS) $(LIBFT) -o $(NAME_PS)
 
-$(CHECKER): $(OBJ_CH)
-	$(CC) $(FLAGS) $(OBJ_CH) -o $(CHECKER)
+$(NAME_CH): $(OBJ_CH) $(LIBFT)
+	@$(CC) $(FLAGS) $(OBJ_CH) $(LIBFT) -o $(NAME_CH)
+
+$(LIBFT) :
+	$(MAKE) -C $(LIBFT_DIR)
+
+bonus: $(NAME_CH)
 
 clean :
 	$(REM) $(OBJ_PS) $(OBJ_CH)
+	make clean -C $(LIBFT_DIR) fclean
 
 fclean : clean
-	$(REM) $(NAME) $(CHECKER)
+	$(REM) $(NAME_PS) $(NAME_CH)
+	make clean -C $(LIBFT_DIR) fclean
 
 re : fclean all
 
-.PHONY : all clean fclean re
+.PHONY : all clean fclean re bonus
